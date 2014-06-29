@@ -22,25 +22,33 @@
 
 class BMP085Sensor : public OneWireSensor
 {
+#ifndef DEMO_SENSORS
 	Adafruit_BMP085_Unified *_bmp ;
+#endif
 public:
 	BMP085Sensor(float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(10085,low_limit,high_limit,0,pause_length)
 	{
 		Name=F("BMP085");
+#ifndef DEMO_SENSORS
  		_bmp = new Adafruit_BMP085_Unified(_port);
 		if(!_bmp->begin())
 		{
 			/* There was a problem detecting the BMP085 ... check your connections */
 			Serial.print(F("Ooops, no BMP085 detected ... Check your wiring or I2C ADDR!"));
 		}
+#endif
 	}
 	virtual void measure()
 	{
+#ifdef DEMO_SENSORS
+		SetData((float)rand()/RAND_MAX*100+1000);
+#else
 		 sensors_event_t event;
 		 _bmp->getEvent(&event);
 		 if (event.pressure)
 		 {
 			SetData(event.pressure);
 		 }
+#endif
 	}
 };

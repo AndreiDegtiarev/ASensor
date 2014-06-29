@@ -19,21 +19,30 @@
 #pragma once
 
 #include "OneWireSensor.h"
+#ifndef DEMO_SENSORS
 #include "OneWire.h"
+#endif
 
 class DS18B20Sensor : public OneWireSensor
 {
+#ifndef DEMO_SENSORS
 	OneWire  *ds;
+#endif
 	int _wire_index;
 public:
 	DS18B20Sensor(int port,int wire_index,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(port,low_limit,high_limit,1,pause_length)
 	{
 		Name=F("DS18B20");
+#ifndef DEMO_SENSORS
 		ds=new OneWire(port);
+#endif
 		_wire_index=wire_index;
 	}
 	virtual void measure()
 	{
+#ifdef DEMO_SENSORS
+		SetData((float)rand()/RAND_MAX*5+15);
+#else
 		byte i;
 		byte present = 0;
 		byte type_s=0;
@@ -155,5 +164,7 @@ public:
 		ds->reset_search();
 		if(!isnan(celsius))
 			SetData(celsius);
+#endif
+
 	}
 };

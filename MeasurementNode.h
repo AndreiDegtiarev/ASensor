@@ -23,13 +23,17 @@
 class MeasurementNode
 {
 	LinkedList<OneWireSensor> &_sensors;
+#ifndef DEMO_SENSORS
 	NRF24Transceiver *_radio;
+#endif
 	const __FlashStringHelper *_nodeID;
 	void  (*_fncCritical)();
 public:
 	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<OneWireSensor> &sensors,void (*fncCritical)()):_sensors(sensors)
 	{
+#ifndef DEMO_SENSORS
 		_radio= new NRF24Transceiver(8,9);
+#endif
 		//_nodeID = nodeID;
 		_fncCritical = fncCritical;
 		//_sensors=sensors;
@@ -40,7 +44,9 @@ public:
 	}
 	void setup()
 	{
+#ifndef DEMO_SENSORS
 		_radio->setup();
+#endif
 	}
 	bool measure()
 	{
@@ -74,7 +80,11 @@ public:
 	  {
 		  OneWireSensor *onePort=_sensors[i];
 		  if(onePort->IsOK())
+		  { 
+#ifndef DEMO_SENSORS
 		      _radio->send_data(_nodeID,onePort->Name,onePort->GetData());
+#endif
+		  }
 	  }
 	}
 	void printSerial()

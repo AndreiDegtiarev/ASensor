@@ -30,22 +30,28 @@ public:
 		Humidity
 	};
 private:
+#ifndef DEMO_SENSORS
 	DHT *_dht;
+#endif
 	DHTSensor *_srcSensor;
 	ReadType _readType;
 	float _last_temperature;
 	float _last_humidity;
 public:
-	DHTSensor(DHT::DHT_MODEL_t model,ReadType readType,int port,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(port,low_limit,high_limit,readType==Temperature?1:0,pause_length)
+	DHTSensor(ReadType readType,int port,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(port,low_limit,high_limit,readType==Temperature?1:0,pause_length)
 	{
+#ifndef DEMO_SENSORS
 		_dht=new DHT();
-		_dht->setup(port,model);
+		_dht->setup(port);
+#endif
 		_srcSensor=NULL;
 		initialize(readType);
 	}
 	DHTSensor(ReadType readType,DHTSensor *src_sensor,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(0,low_limit,high_limit,readType==Temperature?1:0,pause_length)
 	{
+#ifndef DEMO_SENSORS
 		_dht=NULL;
+#endif
 		_srcSensor=src_sensor;
 		initialize(readType);
 	}
@@ -60,6 +66,12 @@ protected:
 public:
 	virtual void measure()
 	{
+#ifdef DEMO_SENSORS
+		if(_readType == Temperature)
+			SetData((float)rand()/RAND_MAX*5+20);
+		else
+			SetData((float)rand()/RAND_MAX*10+60);
+#else
 		DHT::DHT_ERROR_t status= DHT::ERROR_NONE;
 		if(_dht!=NULL)
 		{
@@ -86,5 +98,6 @@ public:
 				SetData(_last_humidity);
 		}
 		//delay(_dht->getMinimumSamplingPeriod()); 
+#endif
 	}
 };
