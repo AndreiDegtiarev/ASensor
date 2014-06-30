@@ -38,7 +38,13 @@ private:
 	float _last_temperature;
 	float _last_humidity;
 public:
-	DHTSensor(ReadType readType,int port,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(port,low_limit,high_limit,readType==Temperature?1:0,pause_length)
+	DHTSensor(ReadType readType,int port,double low_application_limit, double hight_application_limit,unsigned long pause_length)
+										 :OneWireSensor(port,
+														readType==Temperature?-50:1,
+														readType==Temperature?50:100,
+														low_application_limit,
+														hight_application_limit,
+														readType==Temperature?1:0,pause_length)
 	{
 #ifndef DEMO_SENSORS
 		_dht=new DHT();
@@ -47,7 +53,13 @@ public:
 		_srcSensor=NULL;
 		initialize(readType);
 	}
-	DHTSensor(ReadType readType,DHTSensor *src_sensor,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(0,low_limit,high_limit,readType==Temperature?1:0,pause_length)
+	DHTSensor(ReadType readType,DHTSensor *src_sensor,float low_application_limit,float hight_application_limit,unsigned long pause_length)
+										:OneWireSensor(0,
+													   readType==Temperature?-50:1,
+													   readType==Temperature?50:100,
+													   low_application_limit,
+													   hight_application_limit,
+													   readType==Temperature?1:0,pause_length)
 	{
 #ifndef DEMO_SENSORS
 		_dht=NULL;

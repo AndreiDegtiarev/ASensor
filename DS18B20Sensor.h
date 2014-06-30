@@ -30,7 +30,13 @@ class DS18B20Sensor : public OneWireSensor
 #endif
 	int _wire_index;
 public:
-	DS18B20Sensor(int port,int wire_index,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(port,low_limit,high_limit,1,pause_length)
+	DS18B20Sensor(int port,int wire_index,double low_application_limit, double hight_application_limit,unsigned long pause_length)
+		:OneWireSensor(port,
+					   -50,
+					   50,
+					   low_application_limit,
+					   hight_application_limit,
+					   1,pause_length)
 	{
 		Name=F("DS18B20");
 #ifndef DEMO_SENSORS

@@ -26,7 +26,13 @@ class BMP085Sensor : public OneWireSensor
 	Adafruit_BMP085_Unified *_bmp ;
 #endif
 public:
-	BMP085Sensor(float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(10085,low_limit,high_limit,0,pause_length)
+	BMP085Sensor(unsigned long pause_length)
+		:OneWireSensor(10085,
+					   700,
+					   1300,
+					   700,
+					   1300,
+					   0,pause_length)
 	{
 		Name=F("BMP085");
 #ifndef DEMO_SENSORS

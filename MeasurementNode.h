@@ -79,7 +79,7 @@ public:
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
 		  OneWireSensor *onePort=_sensors[i];
-		  if(onePort->IsOK())
+		  if(onePort->Status()!=Error)
 		  { 
 #ifndef DEMO_SENSORS
 		      _radio->send_data(_nodeID,onePort->Name,onePort->GetData());
@@ -94,7 +94,7 @@ public:
 		  OneWireSensor *onePort=_sensors[i];
 		  Serial.print(onePort->Name);
 		  Serial.print(": ");
-		  if(onePort->IsOK())
+		  if(onePort->Status()!=Error)
 			  Serial.print(onePort->GetData());
 		  else
 			  Serial.print("error");
