@@ -21,7 +21,7 @@
 #include "OneWireSensor.h"
 
 
-class DHTSensor : public OneWireSensor
+class DHTTemperatureSensor : public ISensor
 {
 public:
 	enum ReadType
