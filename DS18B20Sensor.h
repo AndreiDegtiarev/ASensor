@@ -18,25 +18,16 @@
 */
 #pragma once
 
-#include "OneWireSensor.h"
-#ifndef DEMO_SENSORS
-#include "OneWire.h"
-#endif
 
-class DS18B20Sensor : public OneWireSensor
+class DS18B20Sensor : public ISensor
 {
 #ifndef DEMO_SENSORS
 	OneWire  *ds;
 #endif
 	int _wire_index;
 public:
-	DS18B20Sensor(int port,int wire_index,double low_application_limit, double hight_application_limit,unsigned long pause_length)
-		:OneWireSensor(port,
-					   -50,
-					   50,
-					   low_application_limit,
-					   hight_application_limit,
-					   1,pause_length)
+	DS18B20Sensor(int port,int wire_index)
+
 	{
 #ifndef DEMO_SENSORS
 		ds=new OneWire(port);
@@ -47,10 +38,24 @@ public:
 	{
 		return F("DS18B20");
 	}
-	virtual void measure()
+	virtual float LowMeasurementLimit()
 	{
+		return -50;
+	}
+	virtual float HighMeasurementLimit()
+	{
+		return 50;
+	}
+	virtual int Precission()
+	{
+		return 1;
+	}
+	virtual bool Measure(float & ret_data)
+	{
+
 #ifdef DEMO_SENSORS
-		SetData((float)rand()/RAND_MAX*5+15);
+		ret_data=(float)rand()/RAND_MAX*5+15;
+		return true;
 #else
 		byte i;
 		byte present = 0;
@@ -86,8 +91,7 @@ public:
 		if(isError)
 		{
 			ds->reset_search();
-			SetError();
-			return;
+			return false;
 		}
 		/*Serial.print("ROM =");
 		for( i = 0; i < 8; i++) {
@@ -98,7 +102,7 @@ public:
 
 		if (OneWire::crc8(addr, 7) != addr[7]) {
 			Serial.println("CRC is not valid!");
-			SetError();
+			return false;
 		}
 		//Serial.println();
 
@@ -118,7 +122,7 @@ public:
 			break;
 		default:
 			Serial.println("Device is not a DS18x20 family device.");
-			SetError();
+			return false;
 		} 
 
 		ds->reset();
@@ -172,8 +176,11 @@ public:
 		Serial.println(" Fahrenheit");*/
 		ds->reset_search();
 		if(!isnan(celsius))
-			SetData(celsius);
+		{
+			ret_data=celsius;
+			return true;
+		}
 #endif
-
+		return false;
 	}
 };

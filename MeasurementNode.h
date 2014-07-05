@@ -19,17 +19,20 @@
 #pragma once
 
 #include "LinkedList.h"
+#ifndef DEMO_SENSORS
+#include "NRF24Transceiver.h"
+#endif
 
 class MeasurementNode
 {
-	LinkedList<ISensor> &_sensors;
+	LinkedList<SensorManager> &_sensors;
 #ifndef DEMO_SENSORS
 	NRF24Transceiver *_radio;
 #endif
 	const __FlashStringHelper *_nodeID;
 	void  (*_fncCritical)();
 public:
-	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<ISensor> &sensors,void (*fncCritical)()):_sensors(sensors)
+	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<SensorManager> &sensors,void (*fncCritical)()):_sensors(sensors)
 	{
 #ifndef DEMO_SENSORS
 		_radio= new NRF24Transceiver(8,9);
@@ -56,7 +59,7 @@ public:
 			_fncCritical();
 			if(_sensors[i]->IsReadyForMeasurement())
 			{
-				_sensors[i]->InitMeasurements();
+				//_sensors[i]->InitMeasurements();
 				_sensors[i]->Measure();
 				retCode = true;
 			}
@@ -78,11 +81,11 @@ public:
 	{
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
-		  OneWireSensor *onePort=_sensors[i];
-		  if(onePort->Status()!=Error)
+		  SensorManager *sensorManager=_sensors[i];
+		  if(sensorManager->Status()!=Error)
 		  { 
 #ifndef DEMO_SENSORS
-		      _radio->send_data(_nodeID,onePort->Name,onePort->GetData());
+		      _radio->send_data(_nodeID,sensorManager->Sensor()->Name(),sensorManager->GetData());
 #endif
 		  }
 	  }
@@ -91,11 +94,11 @@ public:
 	{
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
-		  ISensor *onePort=_sensors[i];
-		  Serial.print(onePort->Name());
+		  SensorManager *sensorManager=_sensors[i];
+		  Serial.print(sensorManager->Sensor()->Name());
 		  Serial.print(": ");
-		  if(onePort->Status()!=Error)
-			  Serial.print(onePort->GetData());
+		  if(sensorManager->Status()!=Error)
+			  Serial.print(sensorManager->GetData());
 		  else
 			  Serial.print("error");
 		  Serial.print("; ");

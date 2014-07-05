@@ -19,40 +19,34 @@
 #pragma once
 
 
-class BMP085Sensor : public ISensor
+class DHTHumiditySensor : public ISensor
 {
-#ifndef DEMO_SENSORS
-	Adafruit_BMP085_Unified *_bmp ;
-#endif
+
+	DHTTemperatureSensor *_srcSensor;
 public:
-	BMP085Sensor()
-	/*	:ISensor(10085,
-					   700,
-					   1300,
-					   700,
-					   1300,
-					   0,pause_length)*/
+
+	DHTHumiditySensor(DHTTemperatureSensor *src_sensor)
+								/*		:ISensor(   readType==Temperature?-50:1,
+													   readType==Temperature?50:100,
+													   low_application_limit,
+													   hight_application_limit,
+													   readType==Temperature?1:0,pause_length) */
 	{
-#ifndef DEMO_SENSORS
- 		_bmp = new Adafruit_BMP085_Unified(10085);
-		if(!_bmp->begin())
-		{
-			/* There was a problem detecting the BMP085 ... check your connections */
-			Serial.print(F("Ooops, no BMP085 detected ... Check your wiring or I2C ADDR!"));
-		}
-#endif
+		_srcSensor = src_sensor;
 	}
+
+public:
 	virtual const __FlashStringHelper* Name()
 	{
-		return F("BMP085");
+		return F("DHT Humidity");
 	}
 	virtual float LowMeasurementLimit()
 	{
-		return 700;
+		return 1;
 	}
 	virtual float HighMeasurementLimit()
 	{
-		return 1300;
+		return 100;
 	}
 	virtual int Precission()
 	{
@@ -60,18 +54,7 @@ public:
 	}
 	virtual bool Measure(float &data)
 	{
-#ifdef DEMO_SENSORS
-		data=(float)rand()/RAND_MAX*100+1000;
-		return true;
-#else
-		 sensors_event_t event;
-		 _bmp->getEvent(&event);
-		 if (event.pressure)
-		 {
-			data=event.pressure;
-			return true;
-		 }
-		 return false;
-#endif
+		data=_srcSensor->LastHumidity();
+		return _srcSensor->IsOK();
 	}
 };

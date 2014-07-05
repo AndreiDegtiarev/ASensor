@@ -18,87 +18,73 @@
 */
 #pragma once
 
-#include "OneWireSensor.h"
 
 
 class DHTTemperatureSensor : public ISensor
 {
-public:
-	enum ReadType
-	{
-		Temperature,
-		Humidity
-	};
 private:
 #ifndef DEMO_SENSORS
 	DHT *_dht;
 #endif
-	DHTSensor *_srcSensor;
-	ReadType _readType;
 	float _last_temperature;
 	float _last_humidity;
+	bool _isOK;
 public:
-	DHTSensor(ReadType readType,int port,double low_application_limit, double hight_application_limit,unsigned long pause_length)
-										 :OneWireSensor(port,
+	DHTTemperatureSensor(int port)
+									/*	 :ISensor(port,
 														readType==Temperature?-50:1,
 														readType==Temperature?50:100,
 														low_application_limit,
 														hight_application_limit,
-														readType==Temperature?1:0,pause_length)
+														readType==Temperature?1:0,pause_length)*/
 	{
 #ifndef DEMO_SENSORS
 		_dht=new DHT();
 		_dht->setup(port);
 #endif
-		_srcSensor=NULL;
-		initialize(readType);
-	}
-	DHTSensor(ReadType readType,DHTSensor *src_sensor,float low_application_limit,float hight_application_limit,unsigned long pause_length)
-										:OneWireSensor(0,
-													   readType==Temperature?-50:1,
-													   readType==Temperature?50:100,
-													   low_application_limit,
-													   hight_application_limit,
-													   readType==Temperature?1:0,pause_length)
-	{
-#ifndef DEMO_SENSORS
-		_dht=NULL;
-#endif
-		_srcSensor=src_sensor;
-		initialize(readType);
-	}
-protected:
-	void initialize(ReadType readType)
-	{
-		_readType=readType;
-		_last_temperature=0;
 		_last_humidity=0;
+		_isOK=false;
 	}
+
 public:
 	virtual const __FlashStringHelper* Name()
 	{
-		return F("DHT");
+		return F("DHT Temperature");
 	}
-
-	virtual void Measure()
+	virtual float LowMeasurementLimit()
 	{
+		return -50;
+	}
+	virtual float HighMeasurementLimit()
+	{
+		return 50;
+	}
+	virtual int Precission()
+	{
+		return 1;
+	}
+	float LastHumidity()
+	{
+		return _last_humidity;
+	}
+	bool IsOK()
+	{
+		return _isOK;
+	}
+	virtual bool Measure(float &data)
+	{
+		_isOK=false;
 #ifdef DEMO_SENSORS
-		if(_readType == Temperature)
-			SetData((float)rand()/RAND_MAX*5+20);
-		else
-			SetData((float)rand()/RAND_MAX*10+60);
+		data =(float)rand()/RAND_MAX*5+20;
+		_last_humidity = (float)rand()/RAND_MAX*10+60;
+		_isOK=true;
 #else
 		DHT::DHT_ERROR_t status= DHT::ERROR_NONE;
 		if(_dht!=NULL)
 		{
-			_last_temperature = _dht->getTemperature();
+			data = _dht->getTemperature();
 			_last_humidity = _dht->getHumidity();
 			status=_dht->getStatus();
-		}
-		else if(_srcSensor!=NULL)
-		{
-			_last_temperature = _srcSensor->_last_temperature;
-			_last_humidity = _srcSensor->_last_humidity;
 		}
 		/*Serial.print("Status: ");
 		Serial.print(_dht->getStatusString());
@@ -106,14 +92,9 @@ public:
 		Serial.print(_last_temperature);
 		Serial.print(" Humidity: ");
 		Serial.println(_last_humidity);*/
-		if(status == DHT::ERROR_NONE)
-		{
-			if(_readType == Temperature && !isnan(_last_temperature))
-				SetData(_last_temperature);
-			else if(_readType == Humidity && !isnan(_last_humidity))
-				SetData(_last_humidity);
-		}
+		_isOK=status == DHT::ERROR_NONE && !isnan(_last_temperature) && !isnan(_last_humidity);
 		//delay(_dht->getMinimumSamplingPeriod()); 
 #endif
+		return _isOK;
 	}
 };

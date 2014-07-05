@@ -18,6 +18,8 @@
 */
 #pragma once
 
+#include "printf.h"
+
 const uint64_t pipes[2] = { 0xF0F0F0F0E1LL, 0x7365727631LL };   
 
 class NRF24Transceiver
