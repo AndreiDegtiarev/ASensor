@@ -34,7 +34,6 @@ public:
 					   1300,
 					   0,pause_length)
 	{
-		Name=F("BMP085");
 #ifndef DEMO_SENSORS
  		_bmp = new Adafruit_BMP085_Unified(_port);
 		if(!_bmp->begin())
@@ -44,7 +43,11 @@ public:
 		}
 #endif
 	}
-	virtual void measure()
+	virtual const __FlashStringHelper* Name()
+	{
+		return F("BMP085");
+	}
+	virtual void Measure()
 	{
 #ifdef DEMO_SENSORS
 		SetData((float)rand()/RAND_MAX*100+1000);

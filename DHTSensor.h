@@ -70,13 +70,17 @@ public:
 protected:
 	void initialize(ReadType readType)
 	{
-		Name=F("DHT");
 		_readType=readType;
 		_last_temperature=0;
 		_last_humidity=0;
 	}
 public:
-	virtual void measure()
+	virtual const __FlashStringHelper* Name()
+	{
+		return F("DHT");
+	}
+
+	virtual void Measure()
 	{
 #ifdef DEMO_SENSORS
 		if(_readType == Temperature)

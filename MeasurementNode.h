@@ -22,14 +22,14 @@
 
 class MeasurementNode
 {
-	LinkedList<OneWireSensor> &_sensors;
+	LinkedList<ISensor> &_sensors;
 #ifndef DEMO_SENSORS
 	NRF24Transceiver *_radio;
 #endif
 	const __FlashStringHelper *_nodeID;
 	void  (*_fncCritical)();
 public:
-	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<OneWireSensor> &sensors,void (*fncCritical)()):_sensors(sensors)
+	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<ISensor> &sensors,void (*fncCritical)()):_sensors(sensors)
 	{
 #ifndef DEMO_SENSORS
 		_radio= new NRF24Transceiver(8,9);
@@ -56,8 +56,8 @@ public:
 			_fncCritical();
 			if(_sensors[i]->IsReadyForMeasurement())
 			{
-				_sensors[i]->init_measurements();
-				_sensors[i]->measure();
+				_sensors[i]->InitMeasurements();
+				_sensors[i]->Measure();
 				retCode = true;
 			}
 		}
@@ -91,8 +91,8 @@ public:
 	{
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
-		  OneWireSensor *onePort=_sensors[i];
-		  Serial.print(onePort->Name);
+		  ISensor *onePort=_sensors[i];
+		  Serial.print(onePort->Name());
 		  Serial.print(": ");
 		  if(onePort->Status()!=Error)
 			  Serial.print(onePort->GetData());

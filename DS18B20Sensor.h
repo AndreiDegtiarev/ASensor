@@ -38,11 +38,14 @@ public:
 					   hight_application_limit,
 					   1,pause_length)
 	{
-		Name=F("DS18B20");
 #ifndef DEMO_SENSORS
 		ds=new OneWire(port);
 #endif
 		_wire_index=wire_index;
+	}
+	virtual const __FlashStringHelper* Name()
+	{
+		return F("DS18B20");
 	}
 	virtual void measure()
 	{
