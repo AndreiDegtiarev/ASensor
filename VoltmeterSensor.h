@@ -44,14 +44,14 @@ public:
 		int size=_dataBuffer->Size();
 		int delay_time=(int)(1e6*1.0/sample_ratio);
 		_dataBuffer->SetTimeStep(delay_time/1.0e6);
-		Serial.println("Measurement started");
+		//Serial.println("Measurement started");
 		int * data_y=_dataBuffer->Y();
 		for(int i=0;i<size;i++)
 		{
 			data_y[i]=analogRead(_port);
 			delayMicroseconds(delay_time);
 		}
-		Serial.println("Measurement finished");
+		//Serial.println("Measurement finished");
 	}
 
 };
