@@ -7,12 +7,14 @@ class VoltmeterSensor : ISensor
 {
 	int _port;
 	TimeSerieBuffer<int> *_dataBuffer;
+	int _time_step_us;
 public:
-	VoltmeterSensor(int port,int buffer_size)
+	VoltmeterSensor(int port,int reserved_buffer_size,int actual_size)
 	{
 		_port=port;
-		_dataBuffer=new TimeSerieBuffer<int>(1,1023/5.0,buffer_size);
+		_dataBuffer=new TimeSerieBuffer<int>(1,1023/5.0,reserved_buffer_size,actual_size);
 		pinMode(port,INPUT);
+		_time_step_us=100;
 	}
 	TimeSerieBuffer<int> *Buffer()
 	{
@@ -34,22 +36,37 @@ public:
 	{
 		return 1;
 	}
+	void SetTimeStep(int time_step_us)
+	{
+		_time_step_us=time_step_us;
+		//Log::Number("time_step:",_time_step_us,true);
+	}
+	float TimeLength()
+	{
+		return (_time_step_us*_dataBuffer->Size())/1e6;
+	}
+	int SampleRatio()
+	{
+		if(_time_step_us!=0)
+			return 1.0e6/_time_step_us;
+		else
+			return 0.0;
+	}
 	virtual bool Measure(float &data)
 	{
 		data=analogRead(_port);
 		return true;
 	}
-	void MeasureBuffer(int sample_ratio)
+	void MeasureBuffer()
 	{
 		int size=_dataBuffer->Size();
-		int delay_time=(int)(1e6*1.0/sample_ratio);
-		_dataBuffer->SetTimeStep(delay_time/1.0e6);
+		_dataBuffer->SetTimeStep(_time_step_us/1.0e6);
 		//Serial.println("Measurement started");
 		int * data_y=_dataBuffer->Y();
 		for(int i=0;i<size;i++)
 		{
 			data_y[i]=analogRead(_port);
-			delayMicroseconds(delay_time);
+			delayMicroseconds(_time_step_us);
 		}
 		//Serial.println("Measurement finished");
 	}
