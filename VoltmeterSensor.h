@@ -6,17 +6,17 @@
 class VoltmeterSensor : ISensor
 {
 	int _port;
-	TimeSerieBuffer<int> *_dataBuffer;
+	TimeSerieBuffer *_dataBuffer;
 	int _time_step_us;
 public:
 	VoltmeterSensor(int port,int reserved_buffer_size,int actual_size)
 	{
 		_port=port;
-		_dataBuffer=new TimeSerieBuffer<int>(1,1023/5.0,reserved_buffer_size,actual_size);
+		_dataBuffer=new TimeSerieBuffer(1,1023/5.0,reserved_buffer_size,actual_size);
 		pinMode(port,INPUT);
 		_time_step_us=100;
 	}
-	TimeSerieBuffer<int> *Buffer()
+	TimeSerieBuffer *Buffer()
 	{
 		return _dataBuffer;
 	}
