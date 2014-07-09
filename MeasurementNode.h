@@ -19,6 +19,7 @@
 #pragma once
 
 #include "LinkedList.h"
+#include "ICriticalProcess.h"
 #ifndef DEMO_SENSORS
 #include "NRF24Transceiver.h"
 #endif
@@ -26,19 +27,20 @@
 class MeasurementNode
 {
 	LinkedList<SensorManager> &_sensors;
+	ICriticalProcess *_criticalProcess;
+
 #ifndef DEMO_SENSORS
 	NRF24Transceiver *_radio;
 #endif
 	const __FlashStringHelper *_nodeID;
-	void  (*_fncCritical)();
 public:
-	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<SensorManager> &sensors,void (*fncCritical)()):_sensors(sensors)
+	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<SensorManager> &sensors):_sensors(sensors)
 	{
 #ifndef DEMO_SENSORS
 		_radio= new NRF24Transceiver(8,9);
 #endif
 		//_nodeID = nodeID;
-		_fncCritical = fncCritical;
+		_criticalProcess = NULL;
 		//_sensors=sensors;
 	}
 	void SetID(const __FlashStringHelper *nodeID)
@@ -51,12 +53,18 @@ public:
 		_radio->setup();
 #endif
 	}
+	void SetCriticalProcess(ICriticalProcess *criticalProcess)
+	{
+		_criticalProcess=criticalProcess;
+	}
+
 	bool measure()
 	{
 		bool retCode=false;
 		for(int i=0;i<_sensors.Count();i++)
 		{
-			_fncCritical();
+			if(_criticalProcess!=NULL)
+				_criticalProcess->loop();
 			if(_sensors[i]->IsReadyForMeasurement())
 			{
 				//_sensors[i]->InitMeasurements();
