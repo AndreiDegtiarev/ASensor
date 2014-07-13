@@ -104,12 +104,12 @@ public:
 	  {
 		  SensorManager *sensorManager=_sensors[i];
 		  Serial.print(sensorManager->Sensor()->Name());
-		  Serial.print(": ");
+		  Serial.print(F(": "));
 		  if(sensorManager->Status()!=Error)
 			  Serial.print(sensorManager->GetData());
 		  else
-			  Serial.print("error");
-		  Serial.print("; ");
+			  Serial.print(F("error"));
+		  Serial.print(F("; "));
 	  }
 	  Serial.println();
 	}

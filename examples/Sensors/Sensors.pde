@@ -7,8 +7,8 @@
 
 #include "MagnetSensor.h"
 
-LinkedList<OneWireSensor> sensors;
-MeasurementNode measurementNode(sensors,loopTouch);
+LinkedList<ISensor> sensors;
+MeasurementNode measurementNode(sensors);
 
 void setup()
 {
