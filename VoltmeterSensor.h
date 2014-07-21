@@ -39,7 +39,6 @@ public:
 	void SetTimeStep(int time_step_us)
 	{
 		_time_step_mus=time_step_us;
-		//Log::Number("time_step:",_time_step_us,true);
 	}
 	float TimeStep()
 	{
