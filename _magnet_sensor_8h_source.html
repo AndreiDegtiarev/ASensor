@@ -124,10 +124,10 @@ $(document).ready(function(){initNavTree('_magnet_sensor_8h_source.html','');});
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_magnet_sensor.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_magnet_sensor.html">MagnetSensor</a> : <span class="keyword">public</span> OneWireSensor</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_magnet_sensor.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_magnet_sensor.html">MagnetSensor</a> : <span class="keyword">public</span> ISensor</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_magnet_sensor.html">MagnetSensor</a>(<span class="keywordtype">int</span> port,<span class="keywordtype">float</span> low_limit,<span class="keywordtype">float</span> high_limit,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pause_length):OneWireSensor(port,low_limit,high_limit, 0,pause_length)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_magnet_sensor.html">MagnetSensor</a>(<span class="keywordtype">int</span> port,<span class="keywordtype">float</span> low_limit,<span class="keywordtype">float</span> high_limit,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pause_length):ISensor(port,low_limit,high_limit, 0,pause_length)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        Name=F(<span class="stringliteral">&quot;Magnet&quot;</span>);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
@@ -143,7 +143,7 @@ $(document).ready(function(){initNavTree('_magnet_sensor_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>MagnetSensor.h</b></li>
-    <li class="footer">Generated on Sun Jul 27 2014 11:16:21 for ASensor by
+    <li class="footer">Generated on Sun Jul 27 2014 11:22:28 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
