@@ -18,10 +18,10 @@
 */
 #pragma once
 
-class MagnetSensor : public OneWireSensor
+class MagnetSensor : public ISensor
 {
 public:
-	MagnetSensor(int port,float low_limit,float high_limit,unsigned long pause_length):OneWireSensor(port,low_limit,high_limit, 0,pause_length)
+	MagnetSensor(int port,float low_limit,float high_limit,unsigned long pause_length):ISensor(port,low_limit,high_limit, 0,pause_length)
 	{
 		Name=F("Magnet");
 	}
