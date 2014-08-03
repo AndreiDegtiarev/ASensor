@@ -64,7 +64,7 @@ public:
 		for(int i=0;i<_sensors.Count();i++)
 		{
 			if(_criticalProcess!=NULL)
-				_criticalProcess->loop();
+				_criticalProcess->Idle();
 			if(_sensors[i]->IsReadyForMeasurement())
 			{
 				//_sensors[i]->InitMeasurements();
