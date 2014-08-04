@@ -1,29 +1,21 @@
+#pragma once
 /*
-  ASesnor - Arduino sesnor library 
+  AFrame - Arduino framework library for ASensor and AWind libraries
   Copyright (C)2014 Andrei Degtiarev. All right reserved
   
-  You can find the latest version of the library at 
+  You can always find the latest version of the library at 
   https://github.com/AndreiDegtiarev/ASensor
 
   This library is free software; you can redistribute it and/or
-  modify it under the terms of the CC BY-NC-SA 3.0 license.
+  modify it under the terms of the MIT license.
   Please see the included documents for further information.
-
-  Commercial use of this library requires you to buy a license that
-  will allow commercial use. This includes using the library,
-  modified or not, as a tool to sell products.
-
-  The license applies to all part of the library including the 
-  examples and tools supplied with the library.
 */
-#pragma once
-
 #include "LinkedList.h"
 #include "ICriticalProcess.h"
 #ifndef DEMO_SENSORS
 #include "NRF24Transceiver.h"
 #endif
-
+///Measurement node controls measurenet process between different sensors
 class MeasurementNode
 {
 	LinkedList<SensorManager> &_sensors;
@@ -34,14 +26,12 @@ class MeasurementNode
 #endif
 	const __FlashStringHelper *_nodeID;
 public:
-	MeasurementNode(/*const __FlashStringHelper *nodeID,*/LinkedList<SensorManager> &sensors):_sensors(sensors)
+	MeasurementNode(LinkedList<SensorManager> &sensors):_sensors(sensors)
 	{
 #ifndef DEMO_SENSORS
 		_radio= new NRF24Transceiver(8,9);
 #endif
-		//_nodeID = nodeID;
 		_criticalProcess = NULL;
-		//_sensors=sensors;
 	}
 	void SetID(const __FlashStringHelper *nodeID)
 	{
@@ -67,7 +57,6 @@ public:
 				_criticalProcess->Idle();
 			if(_sensors[i]->IsReadyForMeasurement())
 			{
-				//_sensors[i]->InitMeasurements();
 				_sensors[i]->Measure();
 				retCode = true;
 			}
@@ -79,8 +68,6 @@ public:
 	  for(int i=0;i<_sensors.Count();i++)
 		if(_sensors[i]->IsChanged())
 		{
-			//Serial.print(_sensors[i]->Name);
-			//Serial.println(" changed");
 			return true;
 		}
 	  return false;
@@ -98,19 +85,18 @@ public:
 		  }
 	  }
 	}
-	void printSerial()
+	void LogResults()
 	{
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
 		  SensorManager *sensorManager=_sensors[i];
-		  Serial.print(sensorManager->Sensor()->Name());
-		  Serial.print(F(": "));
+		  out<<sensorManager->Sensor()->Name()<<F(": ");
 		  if(sensorManager->Status()!=Error)
-			  Serial.print(sensorManager->GetData());
+			  out<<sensorManager->GetData();
 		  else
-			  Serial.print(F("error"));
-		  Serial.print(F("; "));
+			  out<<F("error");
+		  out<<F("; ");
 	  }
-	  Serial.println();
+	  out<<endl;
 	}
 };

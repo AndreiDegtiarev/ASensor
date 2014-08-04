@@ -1,24 +1,17 @@
+#pragma once
 /*
-  ASesnor - Arduino sesnor library 
+  AFrame - Arduino framework library for ASensor and AWind libraries
   Copyright (C)2014 Andrei Degtiarev. All right reserved
   
-  You can find the latest version of the library at 
+  You can always find the latest version of the library at 
   https://github.com/AndreiDegtiarev/ASensor
 
   This library is free software; you can redistribute it and/or
-  modify it under the terms of the CC BY-NC-SA 3.0 license.
+  modify it under the terms of the MIT license.
   Please see the included documents for further information.
-
-  Commercial use of this library requires you to buy a license that
-  will allow commercial use. This includes using the library,
-  modified or not, as a tool to sell products.
-
-  The license applies to all part of the library including the 
-  examples and tools supplied with the library.
 */
-#pragma once
-
-
+///Wrapper for BMP085 air pressure sensor. To use this sensor Adafruit_BMP085_Unified library has to be installed.
+///Details to member functions see ISensor class documentation
 class BMP085Sensor : public ISensor
 {
 #ifndef DEMO_SENSORS

@@ -1,25 +1,17 @@
+#pragma once
 /*
-  ASesnor - Arduino sesnor library 
+  AFrame - Arduino framework library for ASensor and AWind libraries
   Copyright (C)2014 Andrei Degtiarev. All right reserved
   
-  You can find the latest version of the library at 
+  You can always find the latest version of the library at 
   https://github.com/AndreiDegtiarev/ASensor
 
   This library is free software; you can redistribute it and/or
-  modify it under the terms of the CC BY-NC-SA 3.0 license.
+  modify it under the terms of the MIT license.
   Please see the included documents for further information.
-
-  Commercial use of this library requires you to buy a license that
-  will allow commercial use. This includes using the library,
-  modified or not, as a tool to sell products.
-
-  The license applies to all part of the library including the 
-  examples and tools supplied with the library.
 */
-#pragma once
-
-
-
+///Wrapper for DHT temperature and humidity sensor. To use this sensor https://github.com/markruys/arduino-DHT library has to be installed.
+///Details to member functions see ISensor class documentation
 class DHTTemperatureSensor : public ISensor
 {
 private:
@@ -31,12 +23,6 @@ private:
 	bool _isOK;
 public:
 	DHTTemperatureSensor(int port)
-									/*	 :ISensor(port,
-														readType==Temperature?-50:1,
-														readType==Temperature?50:100,
-														low_application_limit,
-														hight_application_limit,
-														readType==Temperature?1:0,pause_length)*/
 	{
 #ifndef DEMO_SENSORS
 		_dht=new DHT();
