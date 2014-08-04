@@ -70,6 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('class_soil_moisture_sensor.html','');}
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,6 +110,8 @@ $(document).ready(function(){initNavTree('class_soil_moisture_sensor.html','');}
 <div class="title">SoilMoistureSensor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_soil_moisture_sensor_8h_source.html">SoilMoistureSensor.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SoilMoistureSensor:</div>
 <div class="dyncontent">
@@ -120,14 +123,28 @@ Inheritance diagram for SoilMoistureSensor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7aec9ca206d705d0d3ac41f5c6b2598e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7aec9ca206d705d0d3ac41f5c6b2598e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SoilMoistureSensor</b> (int port, float low_limit, float high_limit, unsigned long pause_length)</td></tr>
-<tr class="separator:a7aec9ca206d705d0d3ac41f5c6b2598e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13f68bbe750f03102d1eb5c069989cbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13f68bbe750f03102d1eb5c069989cbe"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>measure</b> ()</td></tr>
-<tr class="separator:a13f68bbe750f03102d1eb5c069989cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a789d51a33ef6c5c2cf281e3c371d9b36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a789d51a33ef6c5c2cf281e3c371d9b36"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SoilMoistureSensor</b> (int port)</td></tr>
+<tr class="separator:a789d51a33ef6c5c2cf281e3c371d9b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af91285d2590dc998c49298372cdc30ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af91285d2590dc998c49298372cdc30ed"></a>
+const __FlashStringHelper *&#160;</td><td class="memItemRight" valign="bottom"><b>Name</b> ()</td></tr>
+<tr class="separator:af91285d2590dc998c49298372cdc30ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd2f9dbf07706e9c8850020df7d7390a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd2f9dbf07706e9c8850020df7d7390a"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>LowMeasurementLimit</b> ()</td></tr>
+<tr class="separator:afd2f9dbf07706e9c8850020df7d7390a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad171917a9110734ece1cef20279197db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad171917a9110734ece1cef20279197db"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>HighMeasurementLimit</b> ()</td></tr>
+<tr class="separator:ad171917a9110734ece1cef20279197db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d8058f25c0fa28829c5935db5f6aab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3d8058f25c0fa28829c5935db5f6aab"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Precission</b> ()</td></tr>
+<tr class="separator:aa3d8058f25c0fa28829c5935db5f6aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e79991cf787af9f14a6be6057466dc0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e79991cf787af9f14a6be6057466dc0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Measure</b> (float &amp;data)</td></tr>
+<tr class="separator:a7e79991cf787af9f14a6be6057466dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Soil moistur sensor. No any external libraries are neccesary Details to member functions see ISensor class documentation </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_soil_moisture_sensor_8h_source.html">SoilMoistureSensor.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -136,7 +153,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>measure</b> (
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_soil_moisture_sensor.html">SoilMoistureSensor</a></li>
-    <li class="footer">Generated on Sun Jul 27 2014 11:22:28 for ASensor by
+    <li class="footer">Generated on Mon Aug 4 2014 17:28:11 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

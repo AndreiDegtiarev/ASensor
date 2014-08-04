@@ -8,7 +8,6 @@ var class_voltmeter_sensor =
     [ "MeasureBuffer", "class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43", null ],
     [ "Name", "class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba", null ],
     [ "Precission", "class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b", null ],
-    [ "SampleRatio", "class_voltmeter_sensor.html#a76257119fe1dc27289e2e927be58d379", null ],
     [ "SetTimeStep", "class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50", null ],
     [ "TimeLength", "class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4", null ],
     [ "TimeStep", "class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e", null ]

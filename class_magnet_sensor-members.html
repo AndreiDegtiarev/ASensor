@@ -70,6 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('class_magnet_sensor.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,14 +110,18 @@ $(document).ready(function(){initNavTree('class_magnet_sensor.html','');});
 
 <p>This is the complete list of members for <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>MagnetSensor</b>(int port, float low_limit, float high_limit, unsigned long pause_length) (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>measure</b>() (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>HighMeasurementLimit</b>() (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>LowMeasurementLimit</b>() (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>MagnetSensor</b>(int port) (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Measure</b>(float &amp;data) (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Name</b>() (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Precission</b>() (defined in <a class="el" href="class_magnet_sensor.html">MagnetSensor</a>)</td><td class="entry"><a class="el" href="class_magnet_sensor.html">MagnetSensor</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 27 2014 11:22:28 for ASensor by
+    <li class="footer">Generated on Mon Aug 4 2014 17:28:11 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

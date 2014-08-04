@@ -7,9 +7,9 @@
 
 var indexSectionsWithContent =
 {
-  0: "bdmnpsv",
+  0: "bdhlmnpstv",
   1: "bdmnsv",
-  2: "p",
+  2: "bdhlmnpstv",
   3: "m"
 };
 
@@ -17,7 +17,7 @@ var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "files",
+  2: "functions",
   3: "pages"
 };
 

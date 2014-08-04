@@ -7,7 +7,6 @@ var files =
     [ "MagnetSensor.h", "_magnet_sensor_8h_source.html", null ],
     [ "MeasurementNode.h", "_measurement_node_8h_source.html", null ],
     [ "NRF24Transceiver.h", "_n_r_f24_transceiver_8h_source.html", null ],
-    [ "printf.h", "printf_8h.html", null ],
     [ "SoilMoistureSensor.h", "_soil_moisture_sensor_8h_source.html", null ],
     [ "VoltmeterSensor.h", "_voltmeter_sensor_8h_source.html", null ]
 ];
