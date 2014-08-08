@@ -38,7 +38,7 @@ public:
 	}
 	bool Measure(float &data)
 	{
-		SetData((int)(analogRead(_port)>500?1:0));
+		data=(int)(analogRead(_port)>500?1:0);
 		return true;
 	}
 };

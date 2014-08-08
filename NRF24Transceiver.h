@@ -10,25 +10,28 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-#include "printf.h"
 
 const uint64_t pipes[2] = { 0xF0F0F0F0E1LL, 0x7365727631LL };   
 
+int serial_putc( char c, FILE * )
+{ 
+	Serial.write( c );
+	return c; 
+}
+///Warpper about RF24 library
 class NRF24Transceiver
 {
 	RF24 *_radio;
-	//uint16_t _nodeID;
 
 	char receivePayload[32]; 
 public:
 	NRF24Transceiver(int cepin, int cspin)
 	{
-		//_nodeID = pipes[0] & 0xff;
 		_radio = new RF24(cepin,cspin);
 	}
 	void setup()
 	{
-		printf_begin(); 
+		fdevopen( &serial_putc, 0 );
 		printf("Sending nodeID & 1 sensor data\n\r");   
 		_radio->begin();   
 		// Enable this seems to work better 

@@ -15,7 +15,7 @@
 #ifndef DEMO_SENSORS
 #include "NRF24Transceiver.h"
 #endif
-///Measurement node controls measurenet process between different sensors
+///Measurement node controls measurement process between different sensors
 class MeasurementNode
 {
 	LinkedList<SensorManager> &_sensors;
@@ -26,6 +26,10 @@ class MeasurementNode
 #endif
 	const __FlashStringHelper *_nodeID;
 public:
+	///Constructor
+	/**
+	\param List of sensors
+	*/
 	MeasurementNode(LinkedList<SensorManager> &sensors):_sensors(sensors)
 	{
 #ifndef DEMO_SENSORS
@@ -33,22 +37,25 @@ public:
 #endif
 		_criticalProcess = NULL;
 	}
+	///Sets node id. The id is sended to the receiver
 	void SetID(const __FlashStringHelper *nodeID)
 	{
 		_nodeID=nodeID;
 	}
-	void setup()
+	///Setups radio module 
+	void Initialize()
 	{
 #ifndef DEMO_SENSORS
 		_radio->setup();
 #endif
 	}
+	///Sets pointer to the critical process like touch management
 	void SetCriticalProcess(ICriticalProcess *criticalProcess)
 	{
 		_criticalProcess=criticalProcess;
 	}
-
-	bool measure()
+	///Perfroms measurements over all sensors
+	bool Measure()
 	{
 		bool retCode=false;
 		for(int i=0;i<_sensors.Count();i++)
@@ -63,6 +70,7 @@ public:
 		}
 		return retCode;
 	}
+	///Return true if during the last measurement step at least one sensor contains data that differ from previos measurement step
 	bool IsChanged()
 	{
 	  for(int i=0;i<_sensors.Count();i++)
@@ -72,7 +80,8 @@ public:
 		}
 	  return false;
 	}
-	void sendData()
+	///Sends data over radio module
+	void SendData()
 	{
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
@@ -85,6 +94,7 @@ public:
 		  }
 	  }
 	}
+	///Logs last measurement results
 	void LogResults()
 	{
 	  for(int i=0;i<_sensors.Count();i++)
