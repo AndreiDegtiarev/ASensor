@@ -14,19 +14,33 @@
 ///Details to member functions see ISensor class documentation
 class DHTTemperatureSensor : public ISensor
 {
+public:
+	enum SensorModel
+	{
+		AUTO_DETECT,
+		DHT11,
+		DHT22
+	};
 private:
 #ifndef DEMO_SENSORS
 	DHT *_dht;
 #endif
-	float _last_temperature;
+	//float _last_temperature;
 	float _last_humidity;
 	bool _isOK;
+	int _pin;
 public:
-	DHTTemperatureSensor(int port)
+	DHTTemperatureSensor(int port,SensorModel sensorModel=AUTO_DETECT)
 	{
+		_pin=port;
 #ifndef DEMO_SENSORS
 		_dht=new DHT();
-		_dht->setup(port);
+		DHT::DHT_MODEL_t dhtModel=DHT::AUTO_DETECT;
+		if(sensorModel == DHT11)
+			dhtModel=DHT::DHT11;
+		else
+			dhtModel=DHT::DHT22;
+		_dht->setup(port,dhtModel);
 #endif
 		_last_humidity=0;
 		_isOK=false;
@@ -68,17 +82,23 @@ public:
 		DHT::DHT_ERROR_t status= DHT::ERROR_NONE;
 		if(_dht!=NULL)
 		{
-			data = _dht->getTemperature();
-			_last_humidity = _dht->getHumidity();
 			status=_dht->getStatus();
+			if(status == DHT::ERROR_NONE || status ==DHT::ERROR_CHECKSUM) //test for check sum does not work stably
+			{
+				data = _dht->getTemperature();
+				_last_humidity = _dht->getHumidity();
+			}
+			else
+			{
+				out<<F("DHT Status: ")<<_dht->getStatusString()<<endl;
+				_dht->setup(_pin,_dht->getModel());
+				//delay(_dht->getMinimumSamplingPeriod()*2); 
+			}
 		}
-		/*Serial.print("Status: ");
-		Serial.print(_dht->getStatusString());
-		Serial.print(" Tempr: ");
-		Serial.print(_last_temperature);
-		Serial.print(" Humidity: ");
-		Serial.println(_last_humidity);*/
-		_isOK=status == DHT::ERROR_NONE && !isnan(_last_temperature) && !isnan(_last_humidity);
+#ifdef DEBUG_AWIND
+		out<<F("Status: ")<<_dht->getStatusString()<<F(" Tempr: ")<<data<<F(" Humidity: ")<<_last_humidity<<endl;
+#endif
+		_isOK=status == DHT::ERROR_NONE && !isnan(data) && !isnan(_last_humidity);
 		//delay(_dht->getMinimumSamplingPeriod()); 
 #endif
 		return _isOK;
