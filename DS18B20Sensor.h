@@ -66,7 +66,7 @@ public:
 				isError=!ds->search(addr);
 				if(isError)
 				{
-					Serial.print("No more addresses:");
+					Serial.print(F("No more addresses:"));
 					Serial.println(j);
 					delay(250);
 				}
@@ -94,7 +94,7 @@ public:
 		Serial.println("");*/
 
 		if (OneWire::crc8(addr, 7) != addr[7]) {
-			Serial.println("CRC is not valid!");
+			Serial.println(F("CRC is not valid!"));
 			return false;
 		}
 		//Serial.println();
@@ -102,7 +102,7 @@ public:
 		// the first ROM byte indicates which chip
 		switch (addr[0]) {
 		case 0x10:
-			Serial.println("  Chip = DS18S20");  // or old DS1820
+			Serial.println(F("  Chip = DS18S20"));  // or old DS1820
 			type_s = 1;
 			break;
 		case 0x28:
@@ -110,11 +110,11 @@ public:
 			type_s = 0;
 			break;
 		case 0x22:
-			Serial.println("  Chip = DS1822");
+			Serial.println(F("  Chip = DS1822"));
 			type_s = 0;
 			break;
 		default:
-			Serial.println("Device is not a DS18x20 family device.");
+			Serial.println(F("Device is not a DS18x20 family device."));
 			return false;
 		} 
 
@@ -171,6 +171,9 @@ public:
 		if(!isnan(celsius))
 		{
 			ret_data=celsius;
+#ifdef DEBUG_AWIND
+			out<<F("DS18B20: ")<<ret_data<<endl;
+#endif
 			return true;
 		}
 #endif

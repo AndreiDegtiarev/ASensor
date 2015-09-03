@@ -62,6 +62,9 @@ public:
 		 if (event.pressure)
 		 {
 			data=event.pressure;
+#ifdef DEBUG_AWIND
+			out<<F("Pressure: ")<<data<<endl;
+#endif
 			return true;
 		 }
 		 return false;
