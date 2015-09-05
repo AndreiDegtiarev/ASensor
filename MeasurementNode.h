@@ -109,4 +109,34 @@ public:
 	  }
 	  out<<endl;
 	}
+	///Very usefull excel logging tool https://www.parallax.com/downloads/plx-daq
+	void SetupPLXLog()
+	{
+		out<<F("CLEARDATA")<<endl;
+		out<<F("LABEL,Time,");
+		for(int i=0;i<_sensors.Count();i++)
+		{
+		  SensorManager *sensorManager=_sensors[i];
+		  out<<sensorManager->Sensor()->Name();
+		  if(i<_sensors.Count()-1)
+			out<<F(",");
+		}
+		out<<endl;
+	}
+	void LogResultsPLX()
+	{
+	  out<<"DATA,TIME,";
+	  for(int i=0;i<_sensors.Count();i++)
+	  {
+		  SensorManager *sensorManager=_sensors[i];
+		  if(sensorManager->Status()!=Error)
+			  out<<sensorManager->GetData();
+		  else
+			  out<<F("error");
+		  if(i<_sensors.Count()-1)
+			out<<",";
+	  }
+	  out<<endl;
+	}
+	
 };

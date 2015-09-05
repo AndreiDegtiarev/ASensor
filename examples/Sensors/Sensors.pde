@@ -13,13 +13,17 @@
 ///Installation: AFrame + https://github.com/markruys/arduino-DHT libraries have to be installed
 ///Wiring: DHT sensor should be connected to the pin 10
 ///Radio sender: see rf24 library
+#define DEBUG_AWIND //!<remove comments if name of window is need to known during runtime. Be carrefull about SRAM
 #include <OneWire.h>
 #include <DHT.h>
 #include <SPI.h>
 #include <RF24.h>
 
+#include "AHelper.h"
 #include "ISensor.h"
 #include "DHTHumiditySensor.h"
+#include "DustSensor.h"
+#include "MQ4MethaneGasSensor.h"
 #include "SensorManager.h"
 #include "MeasurementNode.h"
 
@@ -36,18 +40,21 @@ MeasurementNode measurementNode(sensors);
 void setup()
 {
 	//setup log (out is wrap about Serial class)
-	out.begin(57600);
+	out.begin(9600);
 	out<<F("Setup")<<endl;
 
 	//sensors
-	DHTTemperatureSensor *inTempr=new DHTTemperatureSensor(temperature_port);
-	DHTHumiditySensor *inHumidity=new DHTHumiditySensor(inTempr);
+	//DHTTemperatureSensor *inTempr=new DHTTemperatureSensor(temperature_port-2);
+	//DHTHumiditySensor *inHumidity=new DHTHumiditySensor(inTempr);
 	//sensor managers. Manager defines measurement limits and measurement delays
-	sensors.Add(new SensorManager(inTempr,15,40,1000*10)); //0
-	sensors.Add(new SensorManager(inHumidity,0,80,1000*10)); //1
+	//sensors.Add(new SensorManager(inTempr,15,40,1000*10)); //0
+	//sensors.Add(new SensorManager(inHumidity,0,80,1000*10)); //1
+
+	sensors.Add(new SensorManager(new DustSensor(8,1000*10),0,10000,1000*5));
+	sensors.Add(new SensorManager(new MQ4MethaneGasSensor(A0),0,10000,1000*5));
 
 	delay(1000); 
-
+	measurementNode.SetupPLXLog();
 	out<<F("End setup")<<endl;
 }
 void loop()
@@ -57,9 +64,9 @@ void loop()
 	{
 		if(measurementNode.IsChanged())
 		{
-			measurementNode.SendData();
+			//measurementNode.SendData(); // uncomment if measured data need to be sended via NRF24 transceiver
 		//following if is only for debugging purposes
-			measurementNode.LogResults();
+			measurementNode.LogResultsPLX();
 		}
 
 	}
