@@ -39,7 +39,7 @@ public:
 	}
 	float HighMeasurementLimit()
 	{
-		return 1024;
+		return 100000;
 	}
 	int Precission()
 	{
@@ -50,13 +50,10 @@ public:
 		unsigned long duration = pulseIn(_port, LOW);
 		_lowpulseoccupancy += duration;
 		unsigned long cur_sample_time=millis()-_starttime;
-		if ((millis()-_starttime) > _sampletime_ms)//if the sampel time == 30s
+		if ((cur_sample_time > _sampletime_ms && _lowpulseoccupancy>0) || (cur_sample_time/_sampletime_ms)>10)//if the sampel time == 30s
 		{
-			if(_lowpulseoccupancy>0)
-			{
-				float ratio = _lowpulseoccupancy/(cur_sample_time*10.0);  // Integer percentage 0=>100
-				_concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
-			}
+			float ratio = _lowpulseoccupancy/(cur_sample_time*10.0);  // Integer percentage 0=>100
+			_concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
 			_lowpulseoccupancy = 0;
 			_starttime = millis();
 		}
