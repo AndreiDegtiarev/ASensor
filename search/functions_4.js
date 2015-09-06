@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['measure',['Measure',['../class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9',1,'VoltmeterSensor']]],
-  ['measurebuffer',['MeasureBuffer',['../class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43',1,'VoltmeterSensor']]]
+  ['logresults',['LogResults',['../class_measurement_node.html#a6e275bbf6def917e9c243f5281e1c3d9',1,'MeasurementNode']]],
+  ['lowmeasurementlimit',['LowMeasurementLimit',['../class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91',1,'VoltmeterSensor']]]
 ];

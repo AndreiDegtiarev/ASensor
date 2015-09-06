@@ -111,41 +111,88 @@ $(document).ready(function(){initNavTree('class_measurement_node.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Measurement node controls measurenet process between different sensors.  
+<p>Measurement node controls measurement process between different sensors.  
  <a href="class_measurement_node.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_measurement_node_8h_source.html">MeasurementNode.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ca488ee9b75ca18b3cfb5442bd79e53"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MeasurementNode</b> (LinkedList&lt; SensorManager &gt; &amp;sensors)</td></tr>
+<tr class="memitem:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a9ca488ee9b75ca18b3cfb5442bd79e53">MeasurementNode</a> (LinkedList&lt; SensorManager &gt; &amp;sensors)</td></tr>
+<tr class="memdesc:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a9ca488ee9b75ca18b3cfb5442bd79e53">More...</a><br /></td></tr>
 <tr class="separator:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467b2ca6914eafe832cea54af532f498"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a467b2ca6914eafe832cea54af532f498"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetID</b> (const __FlashStringHelper *nodeID)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a467b2ca6914eafe832cea54af532f498">SetID</a> (const __FlashStringHelper *nodeID)</td></tr>
+<tr class="memdesc:a467b2ca6914eafe832cea54af532f498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets node id. The id is sended to the receiver. <br /></td></tr>
 <tr class="separator:a467b2ca6914eafe832cea54af532f498"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39dd0d135aa139e69245f43d64996a0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39dd0d135aa139e69245f43d64996a0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()</td></tr>
-<tr class="separator:a39dd0d135aa139e69245f43d64996a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f488168e561be143f6e87de2d74bcbc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f488168e561be143f6e87de2d74bcbc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a1f488168e561be143f6e87de2d74bcbc">Initialize</a> ()</td></tr>
+<tr class="memdesc:a1f488168e561be143f6e87de2d74bcbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups radio module. <br /></td></tr>
+<tr class="separator:a1f488168e561be143f6e87de2d74bcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6294618d667245f12392107b6131562"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6294618d667245f12392107b6131562"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCriticalProcess</b> (ICriticalProcess *criticalProcess)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#af6294618d667245f12392107b6131562">SetCriticalProcess</a> (ICriticalProcess *criticalProcess)</td></tr>
+<tr class="memdesc:af6294618d667245f12392107b6131562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets pointer to the critical process like touch management. <br /></td></tr>
 <tr class="separator:af6294618d667245f12392107b6131562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66471a00ecb08445d2babd01bcb2c78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af66471a00ecb08445d2babd01bcb2c78"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>measure</b> ()</td></tr>
-<tr class="separator:af66471a00ecb08445d2babd01bcb2c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd69b9ca490c3ccff86c46d726e24226"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd69b9ca490c3ccff86c46d726e24226"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#afd69b9ca490c3ccff86c46d726e24226">Measure</a> ()</td></tr>
+<tr class="memdesc:afd69b9ca490c3ccff86c46d726e24226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perfroms measurements over all sensors. <br /></td></tr>
+<tr class="separator:afd69b9ca490c3ccff86c46d726e24226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d7cdfe28404a66e4a64f32d0734ff8e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d7cdfe28404a66e4a64f32d0734ff8e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsChanged</b> ()</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a8d7cdfe28404a66e4a64f32d0734ff8e">IsChanged</a> ()</td></tr>
+<tr class="memdesc:a8d7cdfe28404a66e4a64f32d0734ff8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if during the last measurement step at least one sensor contains data that differ from previos measurement step. <br /></td></tr>
 <tr class="separator:a8d7cdfe28404a66e4a64f32d0734ff8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9523af059526ab7b2058fd223d004e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9523af059526ab7b2058fd223d004e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sendData</b> ()</td></tr>
-<tr class="separator:ad9523af059526ab7b2058fd223d004e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14bb1fb5e918cc6f09069a80c727e39c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14bb1fb5e918cc6f09069a80c727e39c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a14bb1fb5e918cc6f09069a80c727e39c">SendData</a> ()</td></tr>
+<tr class="memdesc:a14bb1fb5e918cc6f09069a80c727e39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data over radio module. <br /></td></tr>
+<tr class="separator:a14bb1fb5e918cc6f09069a80c727e39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e275bbf6def917e9c243f5281e1c3d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e275bbf6def917e9c243f5281e1c3d9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResults</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a6e275bbf6def917e9c243f5281e1c3d9">LogResults</a> ()</td></tr>
+<tr class="memdesc:a6e275bbf6def917e9c243f5281e1c3d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs last measurement results. <br /></td></tr>
 <tr class="separator:a6e275bbf6def917e9c243f5281e1c3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5e794cddf5315d0f27aba7409b4dfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e5e794cddf5315d0f27aba7409b4dfb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a6e5e794cddf5315d0f27aba7409b4dfb">SetupPLXLog</a> ()</td></tr>
+<tr class="memdesc:a6e5e794cddf5315d0f27aba7409b4dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Very usefull excel logging tool <a href="https://www.parallax.com/downloads/plx-daq">https://www.parallax.com/downloads/plx-daq</a>. <br /></td></tr>
+<tr class="separator:a6e5e794cddf5315d0f27aba7409b4dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe39f57870220c1e4d2fe0e0b8b8545"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fe39f57870220c1e4d2fe0e0b8b8545"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResultsPLX</b> ()</td></tr>
+<tr class="separator:a2fe39f57870220c1e4d2fe0e0b8b8545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Measurement node controls measurenet process between different sensors. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Measurement node controls measurement process between different sensors. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a9ca488ee9b75ca18b3cfb5442bd79e53"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeasurementNode::MeasurementNode </td>
+          <td>(</td>
+          <td class="paramtype">LinkedList&lt; SensorManager &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sensors</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">List</td><td>of sensors </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_measurement_node_8h_source.html">MeasurementNode.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -154,7 +201,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResults</b> ()</td
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_measurement_node.html">MeasurementNode</a></li>
-    <li class="footer">Generated on Mon Aug 4 2014 17:28:11 for ASensor by
+    <li class="footer">Generated on Sun Sep 6 2015 12:19:08 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

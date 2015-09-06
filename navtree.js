@@ -19,7 +19,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_b_m_p085_sensor_8h_source.html"
+"_8_sensors_8vsarduino_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

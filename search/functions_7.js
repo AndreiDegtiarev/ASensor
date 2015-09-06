@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['settimestep',['SetTimeStep',['../class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50',1,'VoltmeterSensor']]]
+  ['precission',['Precission',['../class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b',1,'VoltmeterSensor']]]
 ];

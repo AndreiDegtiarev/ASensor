@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['voltmetersensor',['VoltmeterSensor',['../class_voltmeter_sensor.html',1,'VoltmeterSensor'],['../class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b',1,'VoltmeterSensor::VoltmeterSensor()']]]
+  ['timelength',['TimeLength',['../class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4',1,'VoltmeterSensor']]],
+  ['timestep',['TimeStep',['../class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e',1,'VoltmeterSensor']]]
 ];

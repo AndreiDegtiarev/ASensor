@@ -170,7 +170,7 @@ $(document).ready(function(){initNavTree('_d_s18_b20_sensor_8h_source.html','');
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                isError=!ds-&gt;search(addr);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">if</span>(isError)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    Serial.print(<span class="stringliteral">&quot;No more addresses:&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    Serial.print(F(<span class="stringliteral">&quot;No more addresses:&quot;</span>));</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    Serial.println(j);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    delay(250);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
@@ -198,7 +198,7 @@ $(document).ready(function(){initNavTree('_d_s18_b20_sensor_8h_source.html','');
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">        Serial.println(&quot;&quot;);*/</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (OneWire::crc8(addr, 7) != addr[7]) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            Serial.println(<span class="stringliteral">&quot;CRC is not valid!&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            Serial.println(F(<span class="stringliteral">&quot;CRC is not valid!&quot;</span>));</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">//Serial.println();</span></div>
@@ -206,7 +206,7 @@ $(document).ready(function(){initNavTree('_d_s18_b20_sensor_8h_source.html','');
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">// the first ROM byte indicates which chip</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">switch</span> (addr[0]) {</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">case</span> 0x10:</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            Serial.println(<span class="stringliteral">&quot;  Chip = DS18S20&quot;</span>);  <span class="comment">// or old DS1820</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            Serial.println(F(<span class="stringliteral">&quot;  Chip = DS18S20&quot;</span>));  <span class="comment">// or old DS1820</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            type_s = 1;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">case</span> 0x28:</div>
@@ -214,11 +214,11 @@ $(document).ready(function(){initNavTree('_d_s18_b20_sensor_8h_source.html','');
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            type_s = 0;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">case</span> 0x22:</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            Serial.println(<span class="stringliteral">&quot;  Chip = DS1822&quot;</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            Serial.println(F(<span class="stringliteral">&quot;  Chip = DS1822&quot;</span>));</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            type_s = 0;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            Serial.println(<span class="stringliteral">&quot;Device is not a DS18x20 family device.&quot;</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            Serial.println(F(<span class="stringliteral">&quot;Device is not a DS18x20 family device.&quot;</span>));</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        } </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
@@ -274,12 +274,15 @@ $(document).ready(function(){initNavTree('_d_s18_b20_sensor_8h_source.html','');
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">if</span>(!isnan(celsius))</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            ret_data=celsius;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#ifdef DEBUG_AWIND</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            out&lt;&lt;F(<span class="stringliteral">&quot;DS18B20: &quot;</span>)&lt;&lt;ret_data&lt;&lt;endl;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;};</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;};</div>
 <div class="ttc" id="class_d_s18_b20_sensor_html"><div class="ttname"><a href="class_d_s18_b20_sensor.html">DS18B20Sensor</a></div><div class="ttdef"><b>Definition:</b> DS18B20Sensor.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -287,7 +290,7 @@ $(document).ready(function(){initNavTree('_d_s18_b20_sensor_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>DS18B20Sensor.h</b></li>
-    <li class="footer">Generated on Mon Aug 4 2014 17:28:11 for ASensor by
+    <li class="footer">Generated on Sun Sep 6 2015 12:19:08 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

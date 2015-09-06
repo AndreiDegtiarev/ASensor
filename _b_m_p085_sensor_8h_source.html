@@ -166,12 +166,15 @@ $(document).ready(function(){initNavTree('_b_m_p085_sensor_8h_source.html','');}
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;         <span class="keywordflow">if</span> (event.pressure)</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;         {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            data=<span class="keyword">event</span>.pressure;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;         <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#ifdef DEBUG_AWIND</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            out&lt;&lt;F(<span class="stringliteral">&quot;Pressure: &quot;</span>)&lt;&lt;data&lt;&lt;endl;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;         }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;         <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
 <div class="ttc" id="class_b_m_p085_sensor_html"><div class="ttname"><a href="class_b_m_p085_sensor.html">BMP085Sensor</a></div><div class="ttdef"><b>Definition:</b> BMP085Sensor.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -179,7 +182,7 @@ $(document).ready(function(){initNavTree('_b_m_p085_sensor_8h_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>BMP085Sensor.h</b></li>
-    <li class="footer">Generated on Mon Aug 4 2014 17:28:11 for ASensor by
+    <li class="footer">Generated on Sun Sep 6 2015 12:19:08 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
