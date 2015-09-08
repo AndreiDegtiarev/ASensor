@@ -20,10 +20,10 @@ Installation
 ------------
 To install you need download https://github.com/AndreiDegtiarev/AFrame/archive/master.zip, https://github.com/AndreiDegtiarev/ASensor/archive/master.zip, unzip them into arduinosketchfolder/libraries/ folder and then remove the "-master" in the folder name or just "clone into desktop" them.
 Optionally if you need specific sensors following libraries need to be installed:
-RF24:   http://maniacbug.github.com/RF24 (see remarks about modifications above)
-DHT: https://github.com/markruys/arduino-DHT
-BMP085: https://github.com/adafruit/Adafruit_Sensor + https://github.com/adafruit/Adafruit_BMP085_Unified
-DS18B20: http://www.pjrc.com/teensy/arduino_libraries/OneWire.zip
+* RF24:   http://maniacbug.github.com/RF24 (see remarks about modifications above)
+* DHT: https://github.com/markruys/arduino-DHT
+* BMP085: https://github.com/adafruit/Adafruit_Sensor + https://github.com/adafruit/Adafruit_BMP085_Unified
+* DS18B20: http://www.pjrc.com/teensy/arduino_libraries/OneWire.zip
 
 License
 ------------
