@@ -23,6 +23,7 @@ Optionally if you need specific sensors following libraries need to be installed
 RF24:   http://maniacbug.github.com/RF24 (see remarks about modifications above)
 DHT: https://github.com/markruys/arduino-DHT
 BMP085: https://github.com/adafruit/Adafruit_Sensor + https://github.com/adafruit/Adafruit_BMP085_Unified
+DS18B20: http://www.pjrc.com/teensy/arduino_libraries/OneWire.zip
 
 License
 ------------
