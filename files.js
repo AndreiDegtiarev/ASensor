@@ -1,6 +1,5 @@
 var files =
 [
-    [ "examples", "dir_d28a4824dc47e487b107a5db32ef43c4.html", "dir_d28a4824dc47e487b107a5db32ef43c4" ],
     [ "BMP085Sensor.h", "_b_m_p085_sensor_8h_source.html", null ],
     [ "DHTHumiditySensor.h", "_d_h_t_humidity_sensor_8h_source.html", null ],
     [ "DHTTemperatureSensor.h", "_d_h_t_temperature_sensor_8h_source.html", null ],

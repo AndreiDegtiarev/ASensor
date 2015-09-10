@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('_voltmeter_sensor_8h_source.html','');
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  AFrame - Arduino framework library for ASensor and AWind libraries</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">  Copyright (C)2014 Andrei Degtiarev. All right reserved</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  ASensor - Sensor library. Can be used standalone or in conjunction with AWind library</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">  Copyright (C)2015 Andrei Degtiarev. All right reserved</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> </span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">  You can always find the latest version of the library at </span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  https://github.com/AndreiDegtiarev/ASensor</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span></div>
@@ -119,90 +119,90 @@ $(document).ready(function(){initNavTree('_voltmeter_sensor_8h_source.html','');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;ISensor.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;TimeSerieBuffer.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_voltmeter_sensor.html">VoltmeterSensor</a> : ISensor</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> _port;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    TimeSerieBuffer *_dataBuffer;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> _time_step_mus;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b">   30</a></span>&#160;    <a class="code" href="class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b">VoltmeterSensor</a>(<span class="keywordtype">int</span> port,<span class="keywordtype">int</span> reserved_buffer_size,<span class="keywordtype">int</span> actual_size)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        _port=port;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        _dataBuffer=<span class="keyword">new</span> TimeSerieBuffer(1,1023/5.0,reserved_buffer_size,actual_size);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        pinMode(port,INPUT);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        _time_step_mus=100;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#ae499f48dd46881cfa3955d4862fdb0df">   38</a></span>&#160;    TimeSerieBuffer *<a class="code" href="class_voltmeter_sensor.html#ae499f48dd46881cfa3955d4862fdb0df">Buffer</a>()</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">return</span> _dataBuffer;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba">   43</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> __FlashStringHelper* <a class="code" href="class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba">Name</a>()</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> F(<span class="stringliteral">&quot;Voltmeter&quot;</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91">   48</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91">LowMeasurementLimit</a>()</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> -50;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a79a12e4d81e31f14849520c59b80233e">   53</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a79a12e4d81e31f14849520c59b80233e">HighMeasurementLimit</a>()</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> 50;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b">   58</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b">Precission</a>()</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50">SetTimeStep</a>(<span class="keywordtype">int</span> time_step_us)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        _time_step_mus=time_step_us;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e">   68</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e">TimeStep</a>()</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> _time_step_mus;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4">   73</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4">TimeLength</a>()</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> (_time_step_mus*_dataBuffer-&gt;Size())/1e6;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9">   82</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9">Measure</a>(<span class="keywordtype">float</span> &amp;data)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        data=analogRead(_port);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43">   88</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43">MeasureBuffer</a>()</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">int</span> size=_dataBuffer-&gt;Size();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        _dataBuffer-&gt;SetTimeStep(_time_step_mus/1.0e6);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">int</span> * data_y=_dataBuffer-&gt;Y();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;size;i++)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            data_y[i]=analogRead(_port);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            delayMicroseconds(_time_step_mus);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
-<div class="ttc" id="class_voltmeter_sensor_html_ad0aa5a5750562ab6dca893200ad78ae9"><div class="ttname"><a href="class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9">VoltmeterSensor::Measure</a></div><div class="ttdeci">virtual bool Measure(float &amp;data)</div><div class="ttdoc">Performs measurements. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:82</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html"><div class="ttname"><a href="class_voltmeter_sensor.html">VoltmeterSensor</a></div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:18</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a6eb9687e9feaf2892e925f5efd13dd91"><div class="ttname"><a href="class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91">VoltmeterSensor::LowMeasurementLimit</a></div><div class="ttdeci">virtual float LowMeasurementLimit()</div><div class="ttdoc">Return lowest possible measurement limit. If value outside of this limit, measurements treated as err...</div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:48</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a3eee86783e5b1cf5cb836e831a0a91ba"><div class="ttname"><a href="class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba">VoltmeterSensor::Name</a></div><div class="ttdeci">virtual const __FlashStringHelper * Name()</div><div class="ttdoc">Returns internal sensors name. Usefull for debugging. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:43</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a27ddaacbe2c6f0f2b35b40eeb0f50ba4"><div class="ttname"><a href="class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4">VoltmeterSensor::TimeLength</a></div><div class="ttdeci">float TimeLength()</div><div class="ttdoc">Returns time serie length [seconds]. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:73</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_aa8eb54955eee06f1c95f3580e4228f1b"><div class="ttname"><a href="class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b">VoltmeterSensor::Precission</a></div><div class="ttdeci">virtual int Precission()</div><div class="ttdoc">Return how many decimal places make sence for the sensor. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:58</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a0f7fa0da870fd61487982c0d284a3f43"><div class="ttname"><a href="class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43">VoltmeterSensor::MeasureBuffer</a></div><div class="ttdeci">void MeasureBuffer()</div><div class="ttdoc">Performs measurements of time serie. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:88</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a79a12e4d81e31f14849520c59b80233e"><div class="ttname"><a href="class_voltmeter_sensor.html#a79a12e4d81e31f14849520c59b80233e">VoltmeterSensor::HighMeasurementLimit</a></div><div class="ttdeci">virtual float HighMeasurementLimit()</div><div class="ttdoc">Return highest possible measurement limit. If value outside of this limit, measurements treated as er...</div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:53</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a1d11c753a629fba4c194444616dddc50"><div class="ttname"><a href="class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50">VoltmeterSensor::SetTimeStep</a></div><div class="ttdeci">void SetTimeStep(int time_step_us)</div><div class="ttdoc">Sets sample time between measurements [microseconds]. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:63</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_a04eb64ce627b47035f7ccfd74df1711e"><div class="ttname"><a href="class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e">VoltmeterSensor::TimeStep</a></div><div class="ttdeci">float TimeStep()</div><div class="ttdoc">Returns time step [microseconds]. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:68</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_ae499f48dd46881cfa3955d4862fdb0df"><div class="ttname"><a href="class_voltmeter_sensor.html#ae499f48dd46881cfa3955d4862fdb0df">VoltmeterSensor::Buffer</a></div><div class="ttdeci">TimeSerieBuffer * Buffer()</div><div class="ttdoc">return buffer contains measured data </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:38</div></div>
-<div class="ttc" id="class_voltmeter_sensor_html_ab742a2c8c55205dc79b1f4f35342b96b"><div class="ttname"><a href="class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b">VoltmeterSensor::VoltmeterSensor</a></div><div class="ttdeci">VoltmeterSensor(int port, int reserved_buffer_size, int actual_size)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:30</div></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_voltmeter_sensor.html">VoltmeterSensor</a> : ISensor</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> _port;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    TimeSerieBuffer *_dataBuffer;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> _time_step_mus;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b">   29</a></span>&#160;    <a class="code" href="class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b">VoltmeterSensor</a>(<span class="keywordtype">int</span> port,<span class="keywordtype">int</span> reserved_buffer_size,<span class="keywordtype">int</span> actual_size)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        _port=port;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        _dataBuffer=<span class="keyword">new</span> TimeSerieBuffer(1,1023/5.0,reserved_buffer_size,actual_size);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        pinMode(port,INPUT);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        _time_step_mus=100;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#ae499f48dd46881cfa3955d4862fdb0df">   37</a></span>&#160;    TimeSerieBuffer *<a class="code" href="class_voltmeter_sensor.html#ae499f48dd46881cfa3955d4862fdb0df">Buffer</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> _dataBuffer;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba">   42</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> __FlashStringHelper* <a class="code" href="class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba">Name</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> F(<span class="stringliteral">&quot;Voltmeter&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91">   47</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91">LowMeasurementLimit</a>()</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> -50;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a79a12e4d81e31f14849520c59b80233e">   52</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a79a12e4d81e31f14849520c59b80233e">HighMeasurementLimit</a>()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> 50;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b">   57</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b">Precission</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50">   62</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50">SetTimeStep</a>(<span class="keywordtype">int</span> time_step_us)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        _time_step_mus=time_step_us;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e">   67</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e">TimeStep</a>()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> _time_step_mus;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4">   72</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4">TimeLength</a>()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> (_time_step_mus*_dataBuffer-&gt;Size())/1e6;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9">   81</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9">Measure</a>(<span class="keywordtype">float</span> &amp;data)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        data=analogRead(_port);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43">   87</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43">MeasureBuffer</a>()</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">int</span> size=_dataBuffer-&gt;Size();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        _dataBuffer-&gt;SetTimeStep(_time_step_mus/1.0e6);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">int</span> * data_y=_dataBuffer-&gt;Y();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;size;i++)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            data_y[i]=analogRead(_port);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            delayMicroseconds(_time_step_mus);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="ttc" id="class_voltmeter_sensor_html_ad0aa5a5750562ab6dca893200ad78ae9"><div class="ttname"><a href="class_voltmeter_sensor.html#ad0aa5a5750562ab6dca893200ad78ae9">VoltmeterSensor::Measure</a></div><div class="ttdeci">virtual bool Measure(float &amp;data)</div><div class="ttdoc">Performs measurements. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:81</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html"><div class="ttname"><a href="class_voltmeter_sensor.html">VoltmeterSensor</a></div><div class="ttdoc">Voltmeter sensor. No any external libraries are neccesary. Allows measurements not only single value ...</div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:17</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a6eb9687e9feaf2892e925f5efd13dd91"><div class="ttname"><a href="class_voltmeter_sensor.html#a6eb9687e9feaf2892e925f5efd13dd91">VoltmeterSensor::LowMeasurementLimit</a></div><div class="ttdeci">virtual float LowMeasurementLimit()</div><div class="ttdoc">Return lowest possible measurement limit. If value outside of this limit, measurements treated as err...</div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:47</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a3eee86783e5b1cf5cb836e831a0a91ba"><div class="ttname"><a href="class_voltmeter_sensor.html#a3eee86783e5b1cf5cb836e831a0a91ba">VoltmeterSensor::Name</a></div><div class="ttdeci">virtual const __FlashStringHelper * Name()</div><div class="ttdoc">Returns internal sensors name. Usefull for debugging. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:42</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a27ddaacbe2c6f0f2b35b40eeb0f50ba4"><div class="ttname"><a href="class_voltmeter_sensor.html#a27ddaacbe2c6f0f2b35b40eeb0f50ba4">VoltmeterSensor::TimeLength</a></div><div class="ttdeci">float TimeLength()</div><div class="ttdoc">Returns time serie length [seconds]. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:72</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_aa8eb54955eee06f1c95f3580e4228f1b"><div class="ttname"><a href="class_voltmeter_sensor.html#aa8eb54955eee06f1c95f3580e4228f1b">VoltmeterSensor::Precission</a></div><div class="ttdeci">virtual int Precission()</div><div class="ttdoc">Return how many decimal places make sence for the sensor. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:57</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a0f7fa0da870fd61487982c0d284a3f43"><div class="ttname"><a href="class_voltmeter_sensor.html#a0f7fa0da870fd61487982c0d284a3f43">VoltmeterSensor::MeasureBuffer</a></div><div class="ttdeci">void MeasureBuffer()</div><div class="ttdoc">Performs measurements of time serie. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:87</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a79a12e4d81e31f14849520c59b80233e"><div class="ttname"><a href="class_voltmeter_sensor.html#a79a12e4d81e31f14849520c59b80233e">VoltmeterSensor::HighMeasurementLimit</a></div><div class="ttdeci">virtual float HighMeasurementLimit()</div><div class="ttdoc">Return highest possible measurement limit. If value outside of this limit, measurements treated as er...</div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:52</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a1d11c753a629fba4c194444616dddc50"><div class="ttname"><a href="class_voltmeter_sensor.html#a1d11c753a629fba4c194444616dddc50">VoltmeterSensor::SetTimeStep</a></div><div class="ttdeci">void SetTimeStep(int time_step_us)</div><div class="ttdoc">Sets sample time between measurements [microseconds]. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:62</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_a04eb64ce627b47035f7ccfd74df1711e"><div class="ttname"><a href="class_voltmeter_sensor.html#a04eb64ce627b47035f7ccfd74df1711e">VoltmeterSensor::TimeStep</a></div><div class="ttdeci">float TimeStep()</div><div class="ttdoc">Returns time step [microseconds]. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:67</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_ae499f48dd46881cfa3955d4862fdb0df"><div class="ttname"><a href="class_voltmeter_sensor.html#ae499f48dd46881cfa3955d4862fdb0df">VoltmeterSensor::Buffer</a></div><div class="ttdeci">TimeSerieBuffer * Buffer()</div><div class="ttdoc">return buffer contains measured data </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:37</div></div>
+<div class="ttc" id="class_voltmeter_sensor_html_ab742a2c8c55205dc79b1f4f35342b96b"><div class="ttname"><a href="class_voltmeter_sensor.html#ab742a2c8c55205dc79b1f4f35342b96b">VoltmeterSensor::VoltmeterSensor</a></div><div class="ttdeci">VoltmeterSensor(int port, int reserved_buffer_size, int actual_size)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> VoltmeterSensor.h:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>VoltmeterSensor.h</b></li>
-    <li class="footer">Generated on Sun Sep 6 2015 12:19:08 for ASensor by
+    <li class="footer">Generated on Thu Sep 10 2015 17:47:58 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
