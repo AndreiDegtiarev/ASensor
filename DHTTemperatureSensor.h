@@ -10,8 +10,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-///Wrapper for DHT temperature and humidity sensor. To use this sensor https://github.com/markruys/arduino-DHT library has to be installed.
-///Details to member functions see ISensor class documentation
+///Wrapper for DHT temperature and humidity sensor. To use this sensor https://github.com/markruys/arduino-DHT library has to be installed. Details to member functions see ISensor class documentation
 class DHTTemperatureSensor : public ISensor
 {
 public:

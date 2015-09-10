@@ -10,8 +10,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-///DS18B20-Temperature sensor. To use this sensor OneWire library has to be installed from http://www.pjrc.com/teensy/td_libs_OneWire.html 
-///Details to member functions see ISensor class documentation
+///DS18B20-Temperature sensor. To use this sensor OneWire library has to be installed from http://www.pjrc.com/teensy/td_libs_OneWire.html. Details to member functions see ISensor class documentation
 class DS18B20Sensor : public ISensor
 {
 #ifndef DEMO_SENSORS

@@ -11,8 +11,7 @@
   Please see the included documents for further information.
 */
 #include "DHTTemperatureSensor.h"
-///Wrapper for DHT temperature and humidity sensor. Humidity is just read from DHTTemperatureSensor. DHTTemperatureSensor has to be referenced in the first constructor parameter 
-///Details to member functions see ISensor class documentation
+///Wrapper for DHT temperature and humidity sensor. Humidity is just read from DHTTemperatureSensor. DHTTemperatureSensor has to be referenced in the first constructor parameter. Details to member functions see ISensor class documentation
 class DHTHumiditySensor : public ISensor
 {
 

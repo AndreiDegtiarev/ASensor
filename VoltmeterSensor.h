@@ -13,8 +13,7 @@
 #include "ISensor.h"
 #include "TimeSerieBuffer.h"
 
-///Voltmeter sensor. No any external libraries are neccesary. Allows measurements not only single value but time serie as well
-///Details to member functions see ISensor class documentation
+///Voltmeter sensor. No any external libraries are neccesary. Allows measurements not only single value but time serie as well. Details to member functions see ISensor class documentation
 class VoltmeterSensor : ISensor
 {
 	int _port;

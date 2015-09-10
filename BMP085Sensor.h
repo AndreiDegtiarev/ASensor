@@ -10,8 +10,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-///Wrapper for BMP085 air pressure sensor. To use this sensor Adafruit_BMP085_Unified library has to be installed.
-///Details to member functions see ISensor class documentation
+///Wrapper for BMP085 air pressure sensor. To use this sensor Adafruit_BMP085_Unified library has to be installed. Details to member functions see ISensor class documentation
 class BMP085Sensor : public ISensor
 {
 #ifndef DEMO_SENSORS

@@ -10,8 +10,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-///MQ4 methane gas sensor from sainsmart. No any external libraries are neccesary
-///Details to member functions see ISensor class documentation
+///MQ4 methane gas sensor from sainsmart. No any external libraries are neccesary. Details to member functions see ISensor class documentation
 class MQ4MethaneGasSensor : public ISensor
 {
 	int _port;
