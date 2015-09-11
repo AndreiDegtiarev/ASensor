@@ -15,12 +15,19 @@
 ///Radio sender: see rf24 library
 #define DEBUG_AWIND //!<remove comments if name of window is need to known during runtime. Be carrefull about SRAM
 
+//#define WITH_RF24_TRANSCEIVER //comment if you are not have RF24 transceiver
+
 #include <DHT.h>
-#include <SPI.h>
-#include <RF24.h>
 
 #include "AHelper.h"
 #include "ISensor.h"
+
+#ifdef WITH_RF24_TRANSCEIVER
+#include <SPI.h>
+#include <RF24.h>
+#include "NRF24Transceiver.h"
+#endif
+
 #include "DHTHumiditySensor.h"
 //#include "DustSensor.h"
 //#include "MQ4MethaneGasSensor.h"
@@ -36,7 +43,11 @@ int temperature_port=10;
 //list where all sensors are collected
 LinkedList<SensorManager> sensors;
 //manager which controls the measurement process
-MeasurementNode measurementNode(sensors);
+#ifdef WITH_RF24_TRANSCEIVER
+MeasurementNode measurementNode(sensors,new NRF24Transceiver(8,9));
+#else
+MeasurementNode measurementNode(sensors,NULL);
+#endif
 
 void setup()
 {
@@ -65,7 +76,7 @@ void loop()
 	{
 		if(measurementNode.IsChanged())
 		{
-			measurementNode.SendData(); // comment if you aren't going to use NRF24 transceiver
+			measurementNode.SendData(); 
 		//following if is only for debugging purposes
 			measurementNode.LogResultsPLX();
 		}

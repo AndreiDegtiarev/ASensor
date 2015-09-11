@@ -12,29 +12,25 @@
 */
 #include "LinkedList.h"
 #include "ICriticalProcess.h"
-#ifndef DEMO_SENSORS
-#include "NRF24Transceiver.h"
-#endif
+#include "Transceiver.h"
 ///Measurement node controls measurement process between different sensors
 class MeasurementNode
 {
 	LinkedList<SensorManager> &_sensors;
 	ICriticalProcess *_criticalProcess;
 
-#ifndef DEMO_SENSORS
-	NRF24Transceiver *_radio;
-#endif
+	Transceiver *_radio;
 	const __FlashStringHelper *_nodeID;
 public:
 	///Constructor
 	/**
 	\param List of sensors
+	\param tranceiver is not null if data need to be send over radio like RF24 sensor or Wifi 
 	*/
-	MeasurementNode(LinkedList<SensorManager> &sensors):_sensors(sensors)
+	MeasurementNode(LinkedList<SensorManager> &sensors,Transceiver *tranceiver):_sensors(sensors)
 	{
-#ifndef DEMO_SENSORS
-		_radio= new NRF24Transceiver(8,9);
-#endif
+		//_radio= new NRF24Transceiver(8,9);
+		_radio= tranceiver;
 		_criticalProcess = NULL;
 	}
 	///Sets node id. The id is sended to the receiver
@@ -45,9 +41,8 @@ public:
 	///Setups radio module 
 	void Initialize()
 	{
-#ifndef DEMO_SENSORS
-		_radio->setup();
-#endif
+		if(_radio!=NULL)
+			_radio->setup();
 	}
 	///Sets pointer to the critical process like touch management
 	void SetCriticalProcess(ICriticalProcess *criticalProcess)
@@ -88,9 +83,8 @@ public:
 		  SensorManager *sensorManager=_sensors[i];
 		  if(sensorManager->Status()!=Error)
 		  { 
-#ifndef DEMO_SENSORS
-		      _radio->send_data(_nodeID,sensorManager->Sensor()->Name(),sensorManager->GetData());
-#endif
+			  if(_radio!=NULL)
+		         _radio->send_data(_nodeID,sensorManager->Sensor()->Name(),sensorManager->GetData());
 		  }
 	  }
 	}

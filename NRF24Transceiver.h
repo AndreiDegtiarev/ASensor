@@ -10,7 +10,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-
+#include "Transceiver.h"
 const uint64_t pipes[2] = { 0xF0F0F0F0E1LL, 0x7365727631LL };   
 
 int serial_putc( char c, FILE * )
@@ -19,7 +19,7 @@ int serial_putc( char c, FILE * )
 	return c; 
 }
 ///Warpper about RF24 library
-class NRF24Transceiver
+class NRF24Transceiver : public Transceiver
 {
 	RF24 *_radio;
 
@@ -29,7 +29,7 @@ public:
 	{
 		_radio = new RF24(cepin,cspin);
 	}
-	void setup()
+	virtual void setup()
 	{
 		fdevopen( &serial_putc, 0 );
 		printf("Sending nodeID & 1 sensor data\n\r");   
