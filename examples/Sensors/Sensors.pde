@@ -52,7 +52,7 @@ MeasurementNode measurementNode(sensors,NULL);
 void setup()
 {
 	//setup log (out is wrap about Serial class)
-	out.begin(9600);
+	out.begin(57600);
 	out<<F("Setup")<<endl;
 
 	//sensors
