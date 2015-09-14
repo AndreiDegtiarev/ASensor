@@ -15,7 +15,7 @@
 ///Radio sender: see rf24 library
 #define DEBUG_AWIND //!<remove comments if name of window is need to known during runtime. Be carrefull about SRAM
 
-//#define WITH_RF24_TRANSCEIVER //comment if you are not have RF24 transceiver
+#define WITH_RF24_TRANSCEIVER //comment if you are not have RF24 transceiver
 
 #include <DHT.h>
 

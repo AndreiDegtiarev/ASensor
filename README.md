@@ -8,7 +8,7 @@ Example:
 --------
 Sensors example demonstrates basic measurement node that measures and sends via radio temperature and humidity results
 Installation: AFrame + https://github.com/AndreiDegtiarev/arduino-DHT + https://github.com/AndreiDegtiarev/RF24 libraries need to be installed
-In RF24 library the file RF24_config.h has to be changed: line number 40 has to be changed from "#if 1" to "#if 0"
+
 Wiring: DHT sensor should be connected to the pin 10
 Radio sender: see rf24 library
 
@@ -18,7 +18,7 @@ API documentation: http://andreidegtiarev.github.io/ASensor/
 
 Installation
 ------------
-To install you need download https://github.com/AndreiDegtiarev/AFrame/archive/master.zip, https://github.com/AndreiDegtiarev/ASensor/archive/master.zip, unzip them into arduinosketchfolder/libraries/ folder and then remove the "-master" in the folder name or just "clone into desktop" them.
+To install you need install https://github.com/AndreiDegtiarev/AFrame + https://github.com/AndreiDegtiarev/ASensor. You can just "Clone in desktop" them or if you use "Download ZIP"  unzip them into arduinosketchfolder/libraries/ folder and then remove the "-master" in the folder name.
 Optionally if you need specific sensors following libraries need to be installed:
 * RF24:    https://github.com/AndreiDegtiarev/RF24
 * DHT:     https://github.com/AndreiDegtiarev/arduino-DHT
