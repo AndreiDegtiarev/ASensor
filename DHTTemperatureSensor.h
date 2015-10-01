@@ -89,13 +89,13 @@ public:
 			}
 			else
 			{
-				out<<F("DHT Status: ")<<_dht->getStatusString()<<endl;
+				out<<F("DHT Status: ")<<_dht->getStatusString()<<endln;
 				_dht->setup(_pin,_dht->getModel());
 				//delay(_dht->getMinimumSamplingPeriod()*2); 
 			}
 		}
 #ifdef DEBUG_AWIND
-		out<<F("Status: ")<<_dht->getStatusString()<<F(" Tempr: ")<<data<<F(" Humidity: ")<<_last_humidity<<endl;
+		out<<F("Status: ")<<_dht->getStatusString()<<F(" Tempr: ")<<data<<F(" Humidity: ")<<_last_humidity<<endln;
 #endif
 		_isOK=status == DHT::ERROR_NONE && !isnan(data) && !isnan(_last_humidity);
 		//delay(_dht->getMinimumSamplingPeriod()); 

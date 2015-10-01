@@ -101,12 +101,12 @@ public:
 			  out<<F("error");
 		  out<<F("; ");
 	  }
-	  out<<endl;
+	  out<<endln;
 	}
 	///Very usefull excel logging tool https://www.parallax.com/downloads/plx-daq
 	void SetupPLXLog()
 	{
-		out<<F("CLEARDATA")<<endl;
+		out<<F("CLEARDATA")<<endln;
 		out<<F("LABEL,Time,");
 		for(int i=0;i<_sensors.Count();i++)
 		{
@@ -115,7 +115,7 @@ public:
 		  if(i<_sensors.Count()-1)
 			out<<F(",");
 		}
-		out<<endl;
+		out<<endln;
 	}
 	void LogResultsPLX()
 	{
@@ -130,7 +130,7 @@ public:
 		  if(i<_sensors.Count()-1)
 			out<<",";
 	  }
-	  out<<endl;
+	  out<<endln;
 	}
 	
 };

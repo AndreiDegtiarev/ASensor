@@ -62,7 +62,7 @@ public:
 		 {
 			data=event.pressure;
 #ifdef DEBUG_AWIND
-			out<<F("Pressure: ")<<data<<endl;
+			out<<F("Pressure: ")<<data<<endln;
 #endif
 			return true;
 		 }

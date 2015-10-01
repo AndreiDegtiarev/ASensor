@@ -171,7 +171,7 @@ public:
 		{
 			ret_data=celsius;
 #ifdef DEBUG_AWIND
-			out<<F("DS18B20: ")<<ret_data<<endl;
+			out<<F("DS18B20: ")<<ret_data<<endln;
 #endif
 			return true;
 		}

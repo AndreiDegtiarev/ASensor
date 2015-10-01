@@ -53,7 +53,7 @@ void setup()
 {
 	//setup log (out is wrap about Serial class)
 	out.begin(57600);
-	out<<F("Setup")<<endl;
+	out<<F("Setup")<<endln;
 
 	//sensors
 	DHTTemperatureSensor *inTempr=new DHTTemperatureSensor(temperature_port-2);
@@ -67,7 +67,7 @@ void setup()
 
 	delay(1000); 
 	measurementNode.SetupPLXLog();
-	out<<F("End setup")<<endl;
+	out<<F("End setup")<<endln;
 }
 void loop()
 {
