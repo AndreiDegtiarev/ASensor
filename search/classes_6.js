@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transceiver',['Transceiver',['../class_transceiver.html',1,'']]]
+  ['voltmetersensor',['VoltmeterSensor',['../class_voltmeter_sensor.html',1,'']]]
 ];

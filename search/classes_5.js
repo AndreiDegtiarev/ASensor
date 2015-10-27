@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['soilmoisturesensor',['SoilMoistureSensor',['../class_soil_moisture_sensor.html',1,'']]]
+  ['transceiver',['Transceiver',['../class_transceiver.html',1,'']]]
 ];

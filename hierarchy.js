@@ -6,7 +6,6 @@ var hierarchy =
       [ "DHTTemperatureSensor", "class_d_h_t_temperature_sensor.html", null ],
       [ "DS18B20Sensor", "class_d_s18_b20_sensor.html", null ],
       [ "DustSensor", "class_dust_sensor.html", null ],
-      [ "LM35Sensor", "class_l_m35_sensor.html", null ],
       [ "MagnetSensor", "class_magnet_sensor.html", null ],
       [ "MQ4MethaneGasSensor", "class_m_q4_methane_gas_sensor.html", null ],
       [ "SoilMoistureSensor", "class_soil_moisture_sensor.html", null ],

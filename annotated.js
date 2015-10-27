@@ -5,7 +5,6 @@ var annotated =
     [ "DHTTemperatureSensor", "class_d_h_t_temperature_sensor.html", "class_d_h_t_temperature_sensor" ],
     [ "DS18B20Sensor", "class_d_s18_b20_sensor.html", "class_d_s18_b20_sensor" ],
     [ "DustSensor", "class_dust_sensor.html", "class_dust_sensor" ],
-    [ "LM35Sensor", "class_l_m35_sensor.html", "class_l_m35_sensor" ],
     [ "MagnetSensor", "class_magnet_sensor.html", "class_magnet_sensor" ],
     [ "MeasurementNode", "class_measurement_node.html", "class_measurement_node" ],
     [ "MQ4MethaneGasSensor", "class_m_q4_methane_gas_sensor.html", "class_m_q4_methane_gas_sensor" ],
