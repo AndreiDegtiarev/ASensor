@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['soilmoisturesensor',['SoilMoistureSensor',['../class_soil_moisture_sensor.html',1,'']]]
+  ['nrf24transceiver',['NRF24Transceiver',['../class_n_r_f24_transceiver.html',1,'']]]
 ];

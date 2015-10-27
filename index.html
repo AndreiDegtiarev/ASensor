@@ -102,15 +102,16 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="textblock"><h2>Introduction </h2>
 <p>ASensor (arduino sensor) library that contains wrappers for different sensors implemented in external libraries. Can be used as standalone or together with AWind library</p>
 <h2>Example: </h2>
-<p>Sensors example demonstrates basic measurement node that measures and sends via radio temperature and humidity results Installation: AFrame + <a href="https://github.com/markruys/arduino-DHT">https://github.com/markruys/arduino-DHT</a> + <a href="http://maniacbug.github.com/RF24">http://maniacbug.github.com/RF24</a> libraries need to be installed In RF24 library the file RF24_config.h has to be changed: line number 40 has to be changed from "#if 1" to "#if 0" Wiring: DHT sensor should be connected to the pin 10 Radio sender: see rf24 library</p>
+<p>Sensors example demonstrates basic measurement node that measures and sends via radio temperature and humidity results Installation: AFrame + <a href="https://github.com/AndreiDegtiarev/arduino-DHT">https://github.com/AndreiDegtiarev/arduino-DHT</a> + <a href="https://github.com/AndreiDegtiarev/RF24">https://github.com/AndreiDegtiarev/RF24</a> libraries need to be installed</p>
+<p>Wiring: DHT sensor should be connected to the pin 10 Radio sender: see rf24 library</p>
 <h2>Documentation </h2>
 <p>API documentation: <a href="http://andreidegtiarev.github.io/ASensor/">http://andreidegtiarev.github.io/ASensor/</a></p>
 <h2>Installation </h2>
-<p>To install you need download <a href="https://github.com/AndreiDegtiarev/AFrame/archive/master.zip,">https://github.com/AndreiDegtiarev/AFrame/archive/master.zip,</a> <a href="https://github.com/AndreiDegtiarev/ASensor/archive/master.zip,">https://github.com/AndreiDegtiarev/ASensor/archive/master.zip,</a> unzip them into arduinosketchfolder/libraries/ folder and then remove the "-master" in the folder name or just "clone into desktop" them. Optionally if you need specific sensors following libraries need to be installed:</p><ul>
-<li>RF24: <a href="http://maniacbug.github.com/RF24">http://maniacbug.github.com/RF24</a> (see remarks about modifications above)</li>
-<li>DHT: <a href="https://github.com/markruys/arduino-DHT">https://github.com/markruys/arduino-DHT</a></li>
-<li>BMP085: <a href="https://github.com/adafruit/Adafruit_Sensor">https://github.com/adafruit/Adafruit_Sensor</a> + <a href="https://github.com/adafruit/Adafruit_BMP085_Unified">https://github.com/adafruit/Adafruit_BMP085_Unified</a></li>
-<li>DS18B20: <a href="http://www.pjrc.com/teensy/arduino_libraries/OneWire.zip">http://www.pjrc.com/teensy/arduino_libraries/OneWire.zip</a></li>
+<p>To install you need install <a href="https://github.com/AndreiDegtiarev/AFrame">https://github.com/AndreiDegtiarev/AFrame</a> + <a href="https://github.com/AndreiDegtiarev/ASensor">https://github.com/AndreiDegtiarev/ASensor</a>. You can just "Clone in desktop" them or if you use "Download ZIP" unzip them into arduinosketchfolder/libraries/ folder and then remove the "-master" in the folder name. Optionally if you need specific sensors following libraries need to be installed:</p><ul>
+<li>RF24: <a href="https://github.com/AndreiDegtiarev/RF24">https://github.com/AndreiDegtiarev/RF24</a></li>
+<li>DHT: <a href="https://github.com/AndreiDegtiarev/arduino-DHT">https://github.com/AndreiDegtiarev/arduino-DHT</a></li>
+<li>BMP085: <a href="https://github.com/AndreiDegtiarev/Adafruit_Sensor">https://github.com/AndreiDegtiarev/Adafruit_Sensor</a> + <a href="https://github.com/AndreiDegtiarev/Adafruit_BMP085_Unified">https://github.com/AndreiDegtiarev/Adafruit_BMP085_Unified</a></li>
+<li>DS18B20: <a href="https://github.com/AndreiDegtiarev/OneWire">https://github.com/AndreiDegtiarev/OneWire</a></li>
 </ul>
 <h2>License </h2>
 <p>ASensor library can be redistributed and/or modified under the terms of the MIT license. Please see the included documents for further information. </p>
@@ -119,7 +120,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Sep 10 2015 17:47:58 for ASensor by
+    <li class="footer">Generated on Tue Oct 27 2015 22:12:25 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

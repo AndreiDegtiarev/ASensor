@@ -118,9 +118,9 @@ $(document).ready(function(){initNavTree('class_measurement_node.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a9ca488ee9b75ca18b3cfb5442bd79e53">MeasurementNode</a> (LinkedList&lt; SensorManager &gt; &amp;sensors)</td></tr>
-<tr class="memdesc:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a9ca488ee9b75ca18b3cfb5442bd79e53">More...</a><br /></td></tr>
-<tr class="separator:a9ca488ee9b75ca18b3cfb5442bd79e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74381eaea169c151e1ee3f9230c9a5c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a74381eaea169c151e1ee3f9230c9a5c5">MeasurementNode</a> (LinkedList&lt; SensorManager &gt; &amp;sensors, <a class="el" href="class_transceiver.html">Transceiver</a> *tranceiver)</td></tr>
+<tr class="memdesc:a74381eaea169c151e1ee3f9230c9a5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a74381eaea169c151e1ee3f9230c9a5c5">More...</a><br /></td></tr>
+<tr class="separator:a74381eaea169c151e1ee3f9230c9a5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467b2ca6914eafe832cea54af532f498"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a467b2ca6914eafe832cea54af532f498"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_measurement_node.html#a467b2ca6914eafe832cea54af532f498">SetID</a> (const __FlashStringHelper *nodeID)</td></tr>
 <tr class="memdesc:a467b2ca6914eafe832cea54af532f498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets node id. The id is sended to the receiver. <br /></td></tr>
@@ -160,7 +160,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResultsPLX</b> ()<
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Measurement node controls measurement process between different sensors. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a9ca488ee9b75ca18b3cfb5442bd79e53"></a>
+<a class="anchor" id="a74381eaea169c151e1ee3f9230c9a5c5"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -171,8 +171,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResultsPLX</b> ()<
           <td class="memname">MeasurementNode::MeasurementNode </td>
           <td>(</td>
           <td class="paramtype">LinkedList&lt; SensorManager &gt; &amp;&#160;</td>
-          <td class="paramname"><em>sensors</em></td><td>)</td>
+          <td class="paramname"><em>sensors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="class_transceiver.html">Transceiver</a> *&#160;</td>
+          <td class="paramname"><em>tranceiver</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -186,6 +196,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResultsPLX</b> ()<
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">List</td><td>of sensors </td></tr>
+    <tr><td class="paramname">tranceiver</td><td>is not null if data need to be send over radio like RF24 sensor or Wifi </td></tr>
   </table>
   </dd>
 </dl>
@@ -201,7 +212,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LogResultsPLX</b> ()<
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_measurement_node.html">MeasurementNode</a></li>
-    <li class="footer">Generated on Thu Sep 10 2015 17:47:58 for ASensor by
+    <li class="footer">Generated on Tue Oct 27 2015 22:12:25 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

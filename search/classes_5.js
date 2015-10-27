@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['voltmetersensor',['VoltmeterSensor',['../class_voltmeter_sensor.html',1,'']]]
+  ['soilmoisturesensor',['SoilMoistureSensor',['../class_soil_moisture_sensor.html',1,'']]]
 ];

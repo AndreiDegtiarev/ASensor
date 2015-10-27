@@ -194,13 +194,13 @@ $(document).ready(function(){initNavTree('_d_h_t_temperature_sensor_8h_source.ht
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                out&lt;&lt;F(<span class="stringliteral">&quot;DHT Status: &quot;</span>)&lt;&lt;_dht-&gt;getStatusString()&lt;&lt;endl;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                out&lt;&lt;F(<span class="stringliteral">&quot;DHT Status: &quot;</span>)&lt;&lt;_dht-&gt;getStatusString()&lt;&lt;endln;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                _dht-&gt;setup(_pin,_dht-&gt;getModel());</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="comment">//delay(_dht-&gt;getMinimumSamplingPeriod()*2); </span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#ifdef DEBUG_AWIND</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        out&lt;&lt;F(<span class="stringliteral">&quot;Status: &quot;</span>)&lt;&lt;_dht-&gt;getStatusString()&lt;&lt;F(<span class="stringliteral">&quot; Tempr: &quot;</span>)&lt;&lt;data&lt;&lt;F(<span class="stringliteral">&quot; Humidity: &quot;</span>)&lt;&lt;_last_humidity&lt;&lt;endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        out&lt;&lt;F(<span class="stringliteral">&quot;Status: &quot;</span>)&lt;&lt;_dht-&gt;getStatusString()&lt;&lt;F(<span class="stringliteral">&quot; Tempr: &quot;</span>)&lt;&lt;data&lt;&lt;F(<span class="stringliteral">&quot; Humidity: &quot;</span>)&lt;&lt;_last_humidity&lt;&lt;endln;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        _isOK=status == DHT::ERROR_NONE &amp;&amp; !isnan(data) &amp;&amp; !isnan(_last_humidity);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">//delay(_dht-&gt;getMinimumSamplingPeriod()); </span></div>
@@ -215,7 +215,7 @@ $(document).ready(function(){initNavTree('_d_h_t_temperature_sensor_8h_source.ht
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>DHTTemperatureSensor.h</b></li>
-    <li class="footer">Generated on Thu Sep 10 2015 17:47:58 for ASensor by
+    <li class="footer">Generated on Tue Oct 27 2015 22:12:25 for ASensor by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

@@ -1,6 +1,6 @@
 var class_measurement_node =
 [
-    [ "MeasurementNode", "class_measurement_node.html#a9ca488ee9b75ca18b3cfb5442bd79e53", null ],
+    [ "MeasurementNode", "class_measurement_node.html#a74381eaea169c151e1ee3f9230c9a5c5", null ],
     [ "Initialize", "class_measurement_node.html#a1f488168e561be143f6e87de2d74bcbc", null ],
     [ "IsChanged", "class_measurement_node.html#a8d7cdfe28404a66e4a64f32d0734ff8e", null ],
     [ "LogResults", "class_measurement_node.html#a6e275bbf6def917e9c243f5281e1c3d9", null ],

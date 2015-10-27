@@ -1,1 +1,12 @@
 html/
+# VS Files
+*.vcxproj
+*.sln
+*.sdf
+*.opensdf
+*.suo
+*.filters
+*.user
+*.xml
+*.ipch
+*.vsarduino.h
