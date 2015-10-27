@@ -18,7 +18,7 @@ API documentation: http://andreidegtiarev.github.io/ASensor/
 
 Installation
 ------------
-To install you need install https://github.com/AndreiDegtiarev/AFrame + https://github.com/AndreiDegtiarev/ASensor. You can just "Clone in desktop" them or if you use "Download ZIP"  unzip them into arduinosketchfolder/libraries/ folder and then remove the "-master" in the folder name.
+This library is installed together with AWind library. The content of awind_full.zip from https://github.com/AndreiDegtiarev/AWind/releases has to be unziped into arduinosketchfolder/libraries/ folder.
 Optionally if you need specific sensors following libraries need to be installed:
 * RF24:    https://github.com/AndreiDegtiarev/RF24
 * DHT:     https://github.com/AndreiDegtiarev/arduino-DHT
