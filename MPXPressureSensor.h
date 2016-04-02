@@ -34,12 +34,12 @@ public:
 	}
 	int Precission()
 	{
-		return 0;
+		return 3;
 	}
 	bool Measure(float &data)
 	{
 		float sensorVoltage = analogRead(_port)*5.0 / 1023.0;
-		data = (sensorVoltage-0.2)/0.009/100.0; //Bar
+		data = sensorVoltage; //(sensorVoltage - 0.25) / 0.009 / 100.0; //Bar
 		return true;
 	}
 };
