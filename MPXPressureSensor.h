@@ -14,11 +14,14 @@ Please see the included documents for further information.
 class MPXPressureSensor : public ISensor
 {
 	int _port;
-
+	float _offset_volt;
+	float _factor_volt;
 public:
-	MPXPressureSensor(int port)
+	MPXPressureSensor(int port, float offset_volt, float factor_volt)
 	{
 		_port = port;
+		_offset_volt = offset_volt;
+		_factor_volt = factor_volt;
 	}
 	const __FlashStringHelper* Name()
 	{
@@ -26,11 +29,11 @@ public:
 	}
 	float LowMeasurementLimit()
 	{
-		return 0;
+		return -10;
 	}
 	float HighMeasurementLimit()
 	{
-		return 1024;
+		return 10;
 	}
 	int Precission()
 	{
@@ -39,7 +42,7 @@ public:
 	bool Measure(float &data)
 	{
 		float sensorVoltage = analogRead(_port)*5.0 / 1023.0;
-		data = sensorVoltage; //(sensorVoltage - 0.25) / 0.009 / 100.0; //Bar
+		data = (sensorVoltage - _offset_volt) * _factor_volt; 
 		return true;
 	}
 };
