@@ -9,7 +9,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-///Sensor example demonstrates basic measuremnt node that measures and sends via radio temerature and humidity results
+///wifi Grill thermometer sensor sends data to mqtt message broker (in my case RabbitMQ). WeSHA (project on AndreiDegtiarev github account) server display data in broweser as single value and chart. RabbitMQ and WeSHA server are running on Raspberri PI 3
 ///Installation: AFrame + https://github.com/markruys/arduino-DHT libraries have to be installed
 
 #define DEBUG_AWIND //!<remove comments if name of window is need to known during runtime. Be carrefull about SRAM
