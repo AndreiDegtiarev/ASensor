@@ -84,7 +84,7 @@ public:
 		  if(sensorManager->Status()!=Error)
 		  { 
 			  if(_radio!=NULL)
-		         _radio->send_data(_nodeID,sensorManager->Sensor()->Name(),sensorManager->GetData());
+		         _radio->send_data(_nodeID, sensorManager->AppName()!=NULL? sensorManager->AppName() : sensorManager->Sensor()->Name(),sensorManager->GetData());
 		  }
 	  }
 	}
@@ -119,7 +119,7 @@ public:
 	}
 	void LogResultsPLX()
 	{
-	  out<<"DATA,TIME,";
+	  out<<F("DATA,TIME,");
 	  for(int i=0;i<_sensors.Count();i++)
 	  {
 		  SensorManager *sensorManager=_sensors[i];
