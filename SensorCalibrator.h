@@ -10,7 +10,7 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the MIT license.
 Please see the included documents for further information.
 */
-///Sensor calibrator helps to recalculate measured values into phisical ones.
+///Sensor calibrator helps to recalculate measured values into phisical ones. See GrillThermometer example
 class SensorCalibrator
 {
 	const float * _calibrationTable;
