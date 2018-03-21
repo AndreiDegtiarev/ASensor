@@ -1,14 +1,14 @@
 #pragma once
 /*
-  ASensor - Sensor library. Can be used standalone or in conjunction with AWind library
-  Copyright (C)2015 Andrei Degtiarev. All right reserved
-  
-  You can always find the latest version of the library at 
-  https://github.com/AndreiDegtiarev/ASensor
+ASensor - Sensor library. Can be used standalone or in conjunction with AWind library
+Copyright (C) 2015-2018 Andrei Degtiarev. All right reserved
 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the MIT license.
-  Please see the included documents for further information.
+You can always find the latest version of the library at
+https://github.com/AndreiDegtiarev/ASensor
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the MIT license.
+Please see the included documents for further information.
 */
 #include "Transceiver.h"
 const uint64_t pipes[2] = { 0xF0F0F0F0E1LL, 0x7365727631LL };   

@@ -1,14 +1,14 @@
 #pragma once
 /*
-  ASensor - Sensor library. Can be used standalone or in conjunction with AWind library
-  Copyright (C)2015 Andrei Degtiarev. All right reserved
+ASensor - Sensor library. Can be used standalone or in conjunction with AWind library
+Copyright (C) 2015-2018 Andrei Degtiarev. All right reserved
 
-  You can always find the latest version of the library at 
-  https://github.com/AndreiDegtiarev/ASensor
+You can always find the latest version of the library at
+https://github.com/AndreiDegtiarev/ASensor
 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the MIT license.
-  Please see the included documents for further information.
+This library is free software; you can redistribute it and/or
+modify it under the terms of the MIT license.
+Please see the included documents for further information.
 */
 #include "DHTTemperatureSensor.h"
 ///Wrapper for DHT temperature and humidity sensor. Humidity is just read from DHTTemperatureSensor. DHTTemperatureSensor has to be referenced in the first constructor parameter. Details to member functions see ISensor class documentation
