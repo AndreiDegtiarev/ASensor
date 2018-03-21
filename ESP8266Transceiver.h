@@ -21,6 +21,7 @@ class ESP8266Transceiver : public Transceiver
 	Adafruit_MQTT_Client _mqtt;
 	LinkedList<Adafruit_MQTT_Publish> _publischSensors;
 	LinkedList<SensorManager> &_sensors;
+	char _MACAddress[18];
 
 public:
 	ESP8266Transceiver(const char *wlan, const char *password, const char *server, LinkedList<SensorManager> &sensors)
@@ -30,6 +31,11 @@ public:
 	}
 	virtual void setup()
 	{
+		uint8_t MAC_array[6];
+		WiFi.macAddress(MAC_array);
+		for (int i = 0; i < sizeof(MAC_array); ++i) {
+			sprintf(_MACAddress, "%s%02x:", _MACAddress, MAC_array[i]);
+		}
 		WiFi.begin(_wlan, _password);
 		while (WiFi.status() != WL_CONNECTED) {
 			delay(500);
@@ -40,13 +46,14 @@ public:
 		for (int i = 0; i < _sensors.Count(); i++)
 		{
 			if(_sensors[i]->AppName()!=NULL)
-				sprintf(buf, "%s%s", "ASensors/",_sensors[i]->AppName());
+				sprintf(buf, "MAC%s/%s/%s", _MACAddress,"ASensors",  _sensors[i]->AppName());
 			else
-				sprintf(buf, "%s%s", "ASensors/", _sensors[i]->Sensor()->Name());
-			char * name = new char[strlen(buf)];
+				sprintf(buf, "MAC%s/%s/%s", _MACAddress,"ASensors",  _sensors[i]->Sensor()->Name());
+			char * name = new char[strlen(buf)+1];
+			buf[strlen(buf)] = 0;
 			strncpy(name, buf, strlen(buf));
 			out << buf << strlen(buf) <<endln;
-			buf[strlen(buf)] = 0;
+			
 			_publischSensors.Add(new Adafruit_MQTT_Publish(&_mqtt, name));
 		}
 		out << endln;

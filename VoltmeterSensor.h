@@ -14,11 +14,13 @@
 #include "TimeSerieBuffer.h"
 
 ///Voltmeter sensor. No any external libraries are neccesary. Allows measurements not only single value but time serie as well. Details to member functions see ISensor class documentation
-class VoltmeterSensor : ISensor
+class VoltmeterSensor : public ISensor
 {
 	int _port;
 	TimeSerieBuffer *_dataBuffer;
 	int _time_step_mus;
+	float _voltageReference;
+	float _offset;
 public:
 	///Constructor
 	/**
@@ -26,12 +28,26 @@ public:
 	\param reserved_buffer_size max possible (reserved) buffer size
 	\param actual_size initial buffer size
 	*/
-	VoltmeterSensor(int port,int reserved_buffer_size,int actual_size)
+	VoltmeterSensor(int port,int reserved_buffer_size,int actual_size,float voltageReference = 5.0,float offest = 0):
+		_voltageReference(voltageReference),
+		_offset(offest)
 	{
 		_port=port;
-		_dataBuffer=new TimeSerieBuffer(1,1023/5.0,reserved_buffer_size,actual_size);
+		_dataBuffer=new TimeSerieBuffer(1,1023/ voltageReference,reserved_buffer_size,actual_size, offest);
 		pinMode(port,INPUT);
 		_time_step_mus=100;
+	}
+	/**
+	\param port analogue pin where signal should measured
+	*/
+	VoltmeterSensor(int port,float voltageReference = 5.0, float offest = 0) :
+		_voltageReference(voltageReference),
+		_offset(offest)
+	{
+		_port = port;
+		_dataBuffer = NULL;
+		pinMode(port, INPUT);
+		_time_step_mus = 100;
 	}
 	///return buffer contains measured data
 	TimeSerieBuffer *Buffer()
@@ -56,7 +72,7 @@ public:
 	///Return how many decimal places make sence for the sensor
 	virtual int Precission()
 	{
-		return 1;
+		return 2;
 	}
 	///Sets sample time between measurements [microseconds]
 	void SetTimeStep(int time_step_us)
@@ -80,7 +96,7 @@ public:
 	*/
 	virtual bool Measure(float &data)
 	{
-		data=analogRead(_port);
+		data = analogRead(_port) * _voltageReference / 1023 + _offset;
 		return true;
 	}
 	///Performs measurements of time serie

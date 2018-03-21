@@ -88,11 +88,21 @@ float calibrationTableInternal[] = {
 };
 SensorCalibrator calibratorinternal = SensorCalibrator(calibrationTableInternal, 6);
 
+uint8_t MAC_array[6]; 
+char MAC_char[18];
+
 void setup()
 {
 	//setup log (out is wrap about Serial class)
 	out.begin(115200);
 	out<<F("Setup")<<endln;
+
+	WiFi.macAddress(MAC_array);
+	for (int i = 0; i < sizeof(MAC_array); ++i) {
+		sprintf(MAC_char, "%s%02x:", MAC_char, MAC_array[i]);
+	}
+
+	out<<MAC_char<<endln;
 
 	//sensors
 	delay(1000); 

@@ -36,7 +36,7 @@ public:
 	}
 	float HighMeasurementLimit()
 	{
-		return MAXFLOAT;
+		return 3.4028235E+38;
 	}
 	int Precission()
 	{
