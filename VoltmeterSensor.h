@@ -12,6 +12,9 @@ Please see the included documents for further information.
 */
 #include "ISensor.h"
 #include "TimeSerieBuffer.h"
+#ifdef ESP32
+#include <driver/adc.h>
+#endif
 
 ///Voltmeter sensor. No any external libraries are neccesary. Allows measurements not only single value but time serie as well. Details to member functions see ISensor class documentation
 class VoltmeterSensor : public ISensor
@@ -34,7 +37,9 @@ public:
 	{
 		_port=port;
 		_dataBuffer=new TimeSerieBuffer(1,1023/ voltageReference,reserved_buffer_size,actual_size, offest);
+#ifndef ESP32
 		pinMode(port,INPUT);
+#endif
 		_time_step_mus=100;
 	}
 	/**
@@ -96,20 +101,39 @@ public:
 	*/
 	virtual bool Measure(float &data)
 	{
-		data = analogRead(_port) * _voltageReference / 1023 + _offset;
+		InitMeasurement(_port);
+		data = MeasureRaw(_port) * _voltageReference / 1023 + _offset;
 		return true;
 	}
 	///Performs measurements of time serie
 	void MeasureBuffer()
 	{
+		InitMeasurement(_port);
 		int size=_dataBuffer->Size();
 		_dataBuffer->SetTimeStep(_time_step_mus/1.0e6);
 		int * data_y=_dataBuffer->Y();
 		for(int i=0;i<size;i++)
 		{
-			data_y[i]=analogRead(_port);
+			data_y[i]= MeasureRaw(_port);
 			delayMicroseconds(_time_step_mus);
 		}
+	}
+	static void inline InitMeasurement(int port)
+	{
+#ifdef ESP32
+		adc1_config_width(ADC_WIDTH_BIT_10);
+		adc1_config_channel_atten((adc1_channel_t)port, ADC_ATTEN_DB_11);
+#endif
+
+	}
+	static int inline MeasureRaw(int port)
+	{
+#ifdef ESP32
+		return adc1_get_raw((adc1_channel_t)port);
+#else
+		return analogRead(_port);
+#endif
+
 	}
 
 };

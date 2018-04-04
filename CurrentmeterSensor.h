@@ -10,6 +10,7 @@ modify it under the terms of the MIT license.
 Please see the included documents for further information.
 */
 #pragma once
+#include "VoltmeterSensor.h"
 class CurrentmeterSensor : public ISensor
 {
 	int _voltageProbeOnePort;
@@ -19,9 +20,10 @@ class CurrentmeterSensor : public ISensor
 public:
 	///Constructor
 	/**
-	\param port analogue pin where signal should measured
-	\param reserved_buffer_size max possible (reserved) buffer size
-	\param actual_size initial buffer size
+	\param voltageProbeOnePort analogue pin where first voltage should be measured
+	\param voltageProbeTwoPort analogue pin where second voltage should be measured
+	\param resistance resistance of power resistor
+	\param baseVoltage voltage of arduino board
 	*/
 	CurrentmeterSensor(int voltageProbeOnePort, int voltageProbeTwoPort, float resistance,float baseVoltage):
 		_voltageProbeOnePort(voltageProbeOnePort),
@@ -29,8 +31,10 @@ public:
 		_resistance(resistance),
 		_baseVoltage(baseVoltage)
 	{
+#ifndef ESP32
 		pinMode(_voltageProbeOnePort, INPUT);
 		pinMode(_voltageProbeTwoPort, INPUT);
+#endif
 	}
 	///Returns internal sensors name. Usefull for debugging
 	virtual const __FlashStringHelper* Name()
@@ -59,9 +63,11 @@ public:
 	*/
 	virtual bool Measure(float &data)
 	{
-		auto voltage1 = analogRead(_voltageProbeOnePort) * _baseVoltage / 1023;
-		auto voltage2 = analogRead(_voltageProbeTwoPort) * _baseVoltage / 1023;
+		VoltmeterSensor::InitMeasurement(_voltageProbeOnePort);
+		auto voltage1 = VoltmeterSensor::MeasureRaw(_voltageProbeOnePort) * _baseVoltage / 1023;
+		VoltmeterSensor::InitMeasurement(_voltageProbeTwoPort);
+		auto voltage2 = VoltmeterSensor::MeasureRaw(_voltageProbeTwoPort) * _baseVoltage / 1023;
 		data = (voltage2 - voltage1) / _resistance;
-		//out << "voltage1:" << voltage1 << " voltage2:" << voltage2 << " current:" << data << endln;
+		out << "voltage1:" << voltage1 << " voltage2:" << voltage2 << " current:" << data << endln;
 	}
 };

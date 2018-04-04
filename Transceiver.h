@@ -10,7 +10,7 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the MIT license.
 Please see the included documents for further information.
 */
-
+#include "ADefinitions.h"
 ///Base class for Transceiver objects (like NRF24Transceiver)
 class Transceiver
 {
