@@ -131,7 +131,7 @@ public:
 #ifdef ESP32
 		return adc1_get_raw((adc1_channel_t)port);
 #else
-		return analogRead(_port);
+		return analogRead(port);
 #endif
 
 	}
