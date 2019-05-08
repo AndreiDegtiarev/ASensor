@@ -10,7 +10,7 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the MIT license.
 Please see the included documents for further information.
 */
-///Dust sensor from seeedstudio. No any external libraries are neccesary. Details to member functions see ISensor class documentation
+///Dust sensor from seeedstudio. No any external libraries are necessary. Details to member functions see ISensor class documentation
 class DustSensor : public ISensor
 {
 	int _port;

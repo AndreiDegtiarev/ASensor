@@ -16,7 +16,7 @@ class TimerSensorManager : public SensorManager , public ISensor
 {
 	uint32_t _msStart;                          //!< time when timer was started
 	uint32_t _msInterval;                       //!< timer interval
-	bool _isAutoreset;                          //!< defines whether timer event will begenerated only once or continiously
+	bool _isAutoreset;                          //!< defines whether timer event will begenerated only once or continuously
 	bool _isEnabled;                            //!< defines whether timer is active
 	bool _counter;
 public:
