@@ -36,7 +36,7 @@ public:
 		pinMode(_voltageProbeTwoPort, INPUT);
 #endif
 	}
-	///Returns internal sensors name. Usefull for debugging
+	///Returns internal sensors name. Useful for debugging
 	virtual const __FlashStringHelper* Name()
 	{
 		return F("Currentmeter");

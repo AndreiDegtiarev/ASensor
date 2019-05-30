@@ -9,7 +9,7 @@
   modify it under the terms of the MIT license.
   Please see the included documents for further information.
 */
-///Sensor example demonstrates basic measuremnt node that measures and sends via radio temerature and humidity results
+///Sensor example demonstrates basic measuremnt node that measures and sends via radio temperature and humidity results
 ///Installation: AFrame + https://github.com/markruys/arduino-DHT libraries have to be installed
 ///Wiring: DHT sensor should be connected to the pin 10
 ///Radio sender: see rf24 library

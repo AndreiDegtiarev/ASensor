@@ -18,7 +18,7 @@ API documentation: http://andreidegtiarev.github.io/ASensor/
 
 Installation
 ------------
-This library is installed together with AWind library. The content of awind_full.zip from https://github.com/AndreiDegtiarev/AWind/releases has to be unziped into arduinosketchfolder/libraries/ folder.
+This library is installed together with AWind library. The content of awind_full.zip from https://github.com/AndreiDegtiarev/AWind/releases has to be unzipped into arduinosketchfolder/libraries/ folder.
 Optionally if you need specific sensors following libraries need to be installed:
 * RF24:    https://github.com/AndreiDegtiarev/RF24
 * DHT:     https://github.com/AndreiDegtiarev/arduino-DHT
